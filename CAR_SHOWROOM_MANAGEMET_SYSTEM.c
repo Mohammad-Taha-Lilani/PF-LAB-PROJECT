@@ -84,7 +84,7 @@ if (choice == 1 || choice == 2)
     printf("3.Toyota Hilux Revo G\n");
     printf("4.Toyota Hilux Revo V\n");
     printf("5.Toyota Hilux Revo Rocco\n");
-    printf("6.Toyota Hilux Revo GR-Sssssss\n");
+    printf("6.Toyota Hilux Revo GR-Sssssssssss\n");
 }
 
 return 0;
