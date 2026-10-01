@@ -1,8 +1,8 @@
 #include<stdio.h>
 int main()
 {
-    int password=12345678,Enteredpassword, i=1,customer_choice,Car_category,Car_model,Car_variant,Car_color,Car_engine,Car_transmission,Car_interior,Car_price;
-    int choice;
+    int password=12345678,Enteredpassword, i=1,customer_choice,Car_category,Car_model,Car_variant,Car_color,Car_engine,Car_transmission,Car_interior,Car_price,Car_specs,Car_features;
+    int choice,Car_Details;
 printf("\n====================================\n");
 printf("\nWELCOME TO TOYATA PAKISTAN\n");
 printf("\n====================================\n");
@@ -66,21 +66,293 @@ switch(choice){
                             printf("6.Toyota Yaris 1.5 ATIV X CVT - Black Interio\n");
                             printf("\nEnter Car Model:");
                             scanf("%d",&Car_model);
-                            switch (car_model)
+                            switch (Car_model)
                             case 1:
-                             printf("1.Toyota Yaris 1.3L GLI MT\n");
+                             printf("Toyota Yaris 1.3L GLI MT\n");
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
+                             
                             case 2:
                              printf("2.Toyota Yaris 1.3L GLI CVT\n");
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
                             case 3:
                              printf("3.Toyota Yaris 1.3L ATIV MT\n");
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
                             case 4: 
                              printf("4.Toyota Yaris 1.3L ATIV CVT\n");
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
                              case 5:
                              printf("5.Toyota Yaris 1.5 ATIV X CVT - Beige Interior\n");
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
                             case 6:
                              printf("6.Toyota Yaris 1.5 ATIV X CVT - Black Interior\n");
-            
-                            break;
+                             printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             switch (Car_Details){
+                                case 1:
+                                    printf("Car Colors:\n");
+                                    printf("1.White\n");
+                                    printf("2.Silver\n");
+                                    printf("3.Black\n");
+                                    printf("4.Graphite Grey\n");
+                                    printf("5.Blue\n");
+                                    break;
+                                case 2:
+                                    printf("Car Specifications:\n");
+                                    printf("Engine: 1.3L 4-Cylinder\n");
+                                    printf("Transmission: 5-Speed Manual\n");
+                                    printf("Fuel Type: Petrol\n");
+                                    printf("Seating Capacity: 5\n");
+                                    break;
+                                case 3:
+                                    printf("Car Features:\n");
+                                    printf("Air Conditioning\n");
+                                    printf("Power Windows\n");
+                                    printf("Keyless Entry\n");
+                                    printf("Bluetooth Connectivity\n");
+                                    printf("3 Air Bags\n");
+                                    printf("2 Speakers\n");
+                                    printf("Side Mirrors with Indicators\n");
+                                    printf("Power Steering\n");
+                                    printf("Rear Parking Camera\n");
+                                    printf("Hill Assist Control\n");
+                                    printf("Defogger\n");
+                                    break;
+                                case 4: 
+                                    printf("Price:\n");
+                                    printf("PKR 4,649,000\n");
+                                    break;
+                                default:
+                                    printf("Invalid choice, please try again.\n");
+                                    break;
+                             }
+                             default:
+                             printf("Invalid choice, please try again.\n");
+                             break;
                         case 2:
                             printf("\n===SEDAN===\n");
                             //printf("\n===CATEGORY 2===\n");
@@ -96,16 +368,60 @@ switch(choice){
                             switch (car_model)
                             case 1:
                              printf("1.Toyota Corolla 1.6 MT\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                             case 2:
                              printf("2.Toyota Corolla 1.6 CVT-i\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 3:
                              printf("3.Toyota Corolla 1.6 CVT-i Special Edition\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 4:
                              printf("4.Toyota Corolla 1.8 CVT-i\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 5:
                              printf("5.Toyota Corolla 1.8 CVT-i Grande - Beige Interior\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 6:
                              printf("6.Toyota Corolla 1.8 CVT-i Grande - Black Interior\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             default:
+                             printf("Invalid choice, please try again.\n");
                             break;
                         case 3:
                             printf("\n===SUV===\n");
@@ -125,22 +441,87 @@ switch(choice){
                            switch (car_model)
                             case 1:
                              printf("1.Toyota Fortuner G\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 2:
                              printf("2.Toyota Fortuner V\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 3:
                              printf("3.Toyota Fortuner Sigma 4\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 4:
                              printf("4.Toyota Fortuner Legender\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 5:
                              printf("5.Toyota Fortuner GR-S\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 6:
                              printf("6.Toyota Hilux Revo GR-S\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 7:
                              printf("7.Toyota Hilux Single Cabin\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 8:
                              printf("8.Toyota Hilux E (Standard)\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 9:
                              printf("9.Toyota Hilux Revo G\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             default:
+                             printf("Invalid choice, please try again.\n");
                             break;
                         case 4:
                             printf("\n===GR(Gazoo Racing)===\n");
@@ -151,8 +532,24 @@ switch(choice){
                              switch (car_model)
                             case 1:
                              printf("1.Toyota Fortuner GR-S\n");
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
                              case 2:
                              printf("2.Toyota Hilux Revo GR-S\n"); 
+                              printf("1.Car Colors:\n");
+                             printf("2.Car Specifications:\n");
+                             printf("3.Car Features:\n");
+                             printf("4.Price:\n");
+                             printf("5.Exit:\n");
+                             printf("What Do You Want?\n");
+                             scanf("%d",&Car_Details);
+                             default:
+                             printf("Invalid choice, please try again.\n");
                             break;
                         default:
                             printf("Invalid choice, please try again.\n");
@@ -222,16 +619,12 @@ switch(choice){
             printf("6.Toyota Hilux Revo GR-S\n");
         }
         break;
-
     case 3:
         printf("THANKS FOR VISITING\n");
         break;
-
     default:
         printf("Enter your choice again\n");
         break;
 }
-
-
 return 0;
 }
