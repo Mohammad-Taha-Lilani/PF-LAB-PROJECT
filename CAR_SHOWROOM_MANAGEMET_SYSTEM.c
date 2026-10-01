@@ -122,7 +122,6 @@ switch(choice){
                                         break;
                                  }
                              }
-                             break;
                              
                              
                             case 2:
