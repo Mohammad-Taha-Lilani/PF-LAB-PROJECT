@@ -1530,7 +1530,7 @@ switch(choice){
                     printf("Invalid choice, please try again.\n");
             }
             
-        }
+        
 
 
 
@@ -1580,6 +1580,6 @@ switch(choice){
     default:
         printf("Enter your choice again\n");
         break;
-
+    }
 return 0;
 }
