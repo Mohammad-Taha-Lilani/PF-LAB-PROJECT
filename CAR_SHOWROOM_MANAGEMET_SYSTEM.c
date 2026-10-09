@@ -93,11 +93,12 @@ int main()
             printf("2.Book Test Drive :\n");
             printf("3.Book Cars:\n");
             printf("4.Book Service:\n");
-            printf("5.Exit:\n");
+            printf("5.Compare Cars:\n");
+            printf("6.Exit:\n");
             printf("Enter your choice:\n");
             scanf("%d", &customer_choice);
 
-            if (customer_choice < 1 || customer_choice > 5)
+            if (customer_choice < 1 || customer_choice > 6)
             {
                 printf("Invalid choice, please try again.\n");
             }
@@ -1603,6 +1604,134 @@ int main()
             printf("Book Service:\n");
             break;
         case 5:
+            int car1, car2;
+            int price1, price2;
+            int engine1, engine2;
+            int seats1, seats2;
+            int airbags1, airbags2;
+            int speakers1, speakers2;
+            int transmission1, transmission2;
+
+            printf("\n===== COMPARE TWO CARS =====\n");
+            printf("1. Toyota Yaris 1.3L GLI MT\n");
+            printf("2. Toyota Corolla 1.6 MT\n");
+
+            printf("Select First Car: ");
+            scanf("%d", &car1);
+
+            printf("Select Second Car: ");
+            scanf("%d", &car2);
+
+            if (car1 < 1 || car1 > 2 ||
+                car2 < 1 || car2 > 2)
+            {
+                printf("Invalid car selection!\n");
+                break;
+            }
+
+            if (car1 == car2)
+            {
+                printf("Please select two different cars.\n");
+                break;
+            }
+
+            /* First Car */
+            if (car1 == 1)
+            {
+                price1 = 4649000;
+                engine1 = 1300;
+                seats1 = 5;
+                airbags1 = 3;
+                speakers1 = 2;
+                transmission1 = 5;
+            }
+            else
+            {
+                price1 = 6202000;
+                engine1 = 1600;
+                seats1 = 5;
+                airbags1 = 2;
+                speakers1 = 6;
+                transmission1 = 6;
+            }
+
+            /* Second Car */
+            if (car2 == 1)
+            {
+                price2 = 4649000;
+                engine2 = 1300;
+                seats2 = 5;
+                airbags2 = 3;
+                speakers2 = 2;
+                transmission2 = 5;
+            }
+            else
+            {
+                price2 = 6202000;
+                engine2 = 1600;
+                seats2 = 5;
+                airbags2 = 2;
+                speakers2 = 6;
+                transmission2 = 6;
+            }
+
+            printf("\n===== COMPARISON REPORT =====\n");
+
+            printf("\nFirst Car: ");
+            if (car1 == 1)
+                printf("Toyota Yaris 1.3L GLI MT\n");
+            else
+                printf("Toyota Corolla 1.6 MT\n");
+
+            printf("Second Car: ");
+            if (car2 == 1)
+                printf("Toyota Yaris 1.3L GLI MT\n");
+            else
+                printf("Toyota Corolla 1.6 MT\n");
+
+            printf("\n===== PRICE COMPARISON =====\n");
+            printf("First Car Price: PKR %d\n", price1);
+            printf("Second Car Price: PKR %d\n", price2);
+
+            if (price1 < price2)
+            {
+                printf("Cheaper Car: First Car\n");
+                printf("Price Difference: PKR %d\n",
+                    price2 - price1);
+            }
+            else
+            {
+                printf("Cheaper Car: Second Car\n");
+                printf("Price Difference: PKR %d\n",
+                    price1 - price2);
+            }
+
+            printf("\n===== SPECIFICATIONS =====\n");
+
+            printf("Engine: %d cc vs %d cc\n",
+                engine1, engine2);
+
+            printf("Transmission: %d-speed vs %d-speed\n",
+                transmission1, transmission2);
+
+            printf("Fuel Type: Petrol vs Petrol\n");
+
+            printf("Seating Capacity: %d vs %d\n",
+                seats1, seats2);
+
+            printf("\n===== FEATURES =====\n");
+
+            printf("Air Bags: %d vs %d\n",
+                airbags1, airbags2);
+
+            printf("Speakers: %d vs %d\n",
+                speakers1, speakers2);
+
+            printf("\n===== END OF COMPARISON =====\n");
+
+            break;
+
+        case 6:
             printf("Thank You For Visiting:\n");
             break;
         default:
