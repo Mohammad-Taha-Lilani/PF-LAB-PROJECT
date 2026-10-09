@@ -2,7 +2,7 @@
 int main()
 {
     int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice;
-    int car_status;
+    int Car_status;
     int choice, Car_Details;
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
