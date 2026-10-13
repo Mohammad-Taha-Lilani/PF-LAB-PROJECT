@@ -1,9 +1,50 @@
 #include <stdio.h>
+int yariscolor(){
+    printf("Car Colors:\n");
+    printf("1.White\n");
+    printf("2.Silver\n");
+    printf("3.Black\n");
+    printf("4.Graphite Grey\n");
+    printf("5.Blue\n");
+}
+int corollacolor(){
+    printf("Car Colors:\n");
+    printf("1.Super White\n");
+    printf("2.Silver Metallic\n");
+    printf("3.Graphite Gray\n");
+    printf("4.Strong Blue\n");
+    printf("5.Phantom Brown\n");
+    printf("6.Attitude Black\n");
+}
+int fortunercolor(){
+    printf("Car Colors:\n");
+    printf("1.Super White\n");
+    printf("2.Silver Metallic\n");
+    printf("3.Graphite\n");
+    printf("4.Phantom Brown\n");
+    printf("5.Attitude Black\n");
+}
+int hiluxcolor(){
+    printf("Car Colors:\n");
+    printf("1.Super White\n");
+    printf("2.Metal Stream Metallic\n");
+    printf("3.Attitude Black\n");
+    printf("4.Celestite Grey\n");
+}
+void specs(char Engine[], char Engine Displacement[], char Maximum Power[], char Maximum Torque[], char Transmission[], char Drive Type[], char Fuel Type[], int Seating Capacity, char Fuel Tank[], char Ground Clearance[]){}
+void features(){}
 int main()
 {
     int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice;
     int Car_status;
     int choice, Car_Details;
+    int car1, car2;
+    int price1, price2;
+    int engine1, engine2;
+    int seats1, seats2;
+    int airbags1, airbags2;
+    int speakers1, speakers2;
+    int transmission1, transmission2;
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
     printf("\n====================================\n");
@@ -144,12 +185,7 @@ int main()
                         switch (Car_Details)
                         {
                         case 1:
-                            printf("Car Colors:\n");
-                            printf("1.White\n");
-                            printf("2.Silver\n");
-                            printf("3.Black\n");
-                            printf("4.Graphite Grey\n");
-                            printf("5.Blue\n");
+                            yariscolor();
                             break;
                         case 2:
                             printf("Car Specifications:\n");
@@ -198,12 +234,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Graphite Grey\n");
-                        printf("5.Blue\n");
+                        yariscolor();
                         break;
                     case 2:
                         printf("Car Specifications:\n");
@@ -248,12 +279,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Graphite Grey\n");
-                        printf("5.Blue\n");
+                        yariscolor();
                         break;
                     case 2:
                         printf("Car Specifications:\n");
@@ -298,12 +324,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Graphite Grey\n");
-                        printf("5.Blue\n");
+                        yariscolor();
                         break;
                     case 2:
                         printf("Car Specifications:\n");
@@ -348,12 +369,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Graphite Grey\n");
-                        printf("5.Blue\n");
+                        yariscolor();
                         break;
                     case 2:
                         printf("Car Specifications:\n");
@@ -398,12 +414,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Graphite Grey\n");
-                        printf("5.Blue\n");
+                        yariscolor();
                         break;
                     case 2:
                         printf("Car Specifications:\n");
@@ -467,13 +478,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -533,13 +538,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -598,13 +597,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -663,13 +656,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -728,13 +715,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -794,13 +775,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite Gray\n");
-                        printf("4.Strong Blue\n");
-                        printf("5.Phantom Brown\n");
-                        printf("6.Attitude Black\n");
+                        corollacolor();
                         break;
 
                     case 2:
@@ -853,7 +828,6 @@ int main()
                     break;
                 }
                 break;
-
             case 3:
                 printf("\n===SUV===\n");
                 printf("\n===TOYOTA FORTUNER===\n");
@@ -883,12 +857,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Phantom Brown\n");
-                        printf("5.Attitude Black\n");
+                        fortunercolor();
                         break;
 
                     case 2:
@@ -948,12 +917,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Phantom Brown\n");
-                        printf("5.Attitude Black\n");
+                        fortunercolor();
                         break;
 
                     case 2:
@@ -1013,12 +977,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Phantom Brown\n");
-                        printf("5.Attitude Black\n");
+                        fortunercolor();
                         break;
 
                     case 2:
@@ -1077,12 +1036,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Phantom Brown\n");
-                        printf("5.Attitude Black\n");
+                        fortunercolor();
                         break;
 
                     case 2:
@@ -1141,10 +1095,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Attitude Black\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1201,10 +1152,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Attitude Black\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1263,11 +1211,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Attitude Black\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1326,11 +1270,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Dark Grey\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1386,11 +1326,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.White\n");
-                        printf("2.Silver\n");
-                        printf("3.Black\n");
-                        printf("4.Dark Grey\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1462,12 +1398,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Phantom Brown\n");
-                        printf("5.Attitude Black\n");
+                        fortunercolor();
                         break;
 
                     case 2:
@@ -1526,11 +1457,7 @@ int main()
                     switch (Car_Details)
                     {
                     case 1:
-                        printf("Car Colors:\n");
-                        printf("1.Super White\n");
-                        printf("2.Silver Metallic\n");
-                        printf("3.Graphite\n");
-                        printf("4.Attitude Black\n");
+                        hiluxcolor();
                         break;
 
                     case 2:
@@ -1604,14 +1531,6 @@ int main()
             printf("Book Service:\n");
             break;
         case 5:
-            int car1, car2;
-            int price1, price2;
-            int engine1, engine2;
-            int seats1, seats2;
-            int airbags1, airbags2;
-            int speakers1, speakers2;
-            int transmission1, transmission2;
-
             printf("\n===== COMPARE TWO CARS =====\n");
             printf("1. Toyota Yaris 1.3L GLI MT\n");
             printf("2. Toyota Corolla 1.6 MT\n");
@@ -1736,46 +1655,8 @@ int main()
             break;
         default:
             printf("Invalid choice, please try again.\n");
+            break;
         }
-
-        if (choice == 1 || choice == 2)
-        {
-            printf("\n===CATEGORY 1===\n");
-            printf("\n===TOYOTA YARIS===\n");
-            printf("1.Toyota Yaris 1.3L GLI MT\n");
-            printf("2.Toyota Yaris 1.3L GLI CVT\n");
-            printf("3.Toyota Yaris 1.3L ATIV MT\n");
-            printf("4.Toyota Yaris 1.3L ATIV CV\n");
-            printf("5.Toyota Yaris 1.5 ATIV X CVT - Beige Interior\n");
-            printf("6.Toyota Yaris 1.5 ATIV X CVT - Black Interio\n");
-
-            printf("\n===CATEGORY 2===\n");
-            printf("\n===TOYOTA COROLLA===\n");
-            printf("1.Toyota Corolla 1.6 MT\n");
-            printf("2.Toyota Corolla 1.6 CVT-i\n");
-            printf("3.Toyota Corolla 1.6 CVT-i Special Edition\n");
-            printf("4.Toyota Corolla 1.8 CVT-i\n");
-            printf("5.Toyota Corolla 1.8 CVT-i Grande - Beige Interior\n");
-            printf("6.Toyota Corolla 1.8 CVT-i Grande - Black Interior\n");
-
-            printf("\n===CATEGORY 3===\n");
-            printf("\n===TOYOTA FORTUNER===\n");
-            printf("1.Toyota Fortuner G\n");
-            printf("2.Toyota Fortuner V\n");
-            printf("3.Toyota Fortuner Sigma 4\n");
-            printf("4.Toyota Fortuner Legender\n");
-            printf("5.Toyota Fortuner GR-S\n");
-
-            printf("\n===CATEGORY 4===\n");
-            printf("\n===TOYOTA HILUX===\n");
-            printf("1.Toyota Hilux Single Cabin\n");
-            printf("2.Toyota Hilux E (Standard)\n");
-            printf("3.Toyota Hilux Revo G\n");
-            printf("4.Toyota Hilux Revo V\n");
-            printf("5.Toyota Hilux Revo Rocco\n");
-            printf("6.Toyota Hilux Revo GR-S\n");
-        }
-        break;
         break;
     }
     case 3:
