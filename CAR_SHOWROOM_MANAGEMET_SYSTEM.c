@@ -31,8 +31,31 @@ int hiluxcolor(){
     printf("3.Attitude Black\n");
     printf("4.Celestite Grey\n");
 }
-void specs(char Engine[], char Engine Displacement[], char Maximum Power[], char Maximum Torque[], char Transmission[], char Drive Type[], char Fuel Type[], int Seating Capacity, char Fuel Tank[], char Ground Clearance[]){}
-void features(){}
+void specs(char Engine[], char Engine_Displacement[], char Maximum_Power[], char Maximum_Torque[], char Transmission[], char Drive_Type[], char Fuel_Type[], int Seating_Capacity, char Fuel_Tank[], char Ground_Clearance[]){}
+void features(char keyless_entry[],char sunroof[],char airbags[],char speakers[],char smart_entry[],char pow_windows[],char anti_theft_alarm[],char defogger[],char rear_wipers[],char led_display[],char rear_park_cam[],char front_park_cam[],char rear_park_sensors[],char hill_assisst_cont[],char side_mirr_indic[],char drls[],char clim_ctrl[],char alloy[],char pust_strt[],char rect_mirr[],char vehi_stab_ctrl[],char dwnhill_assisst_ctrl[]){
+    printf("Keyless Entry: %s\n",keyless_entry);
+    printf("Sunroof: %s\n",sunroof);
+    printf("Airbags: %s\n",airbags);
+    printf("Speakers: %s\n",speakers);
+    printf("Smart Entry: %s\n",smart_entry);
+    printf("Power Windows: %s\n",pow_windows);
+    printf("Anti Theft Alarm: %s\n",anti_theft_alarm);
+    printf("Defogger: %s\n",defogger);
+    printf("Rear Wipers: %s\n",rear_wipers);
+    printf("Led Display: %s\n",led_display);
+    printf("Rear Parking Camera: %s\n",rear_park_cam);
+    printf("Front Parking Camera: %s\n",front_park_cam);
+    printf("Rear Parking Sensors: %s\n",rear_park_sensors);
+    printf("Hill Assisst Control: %s\n",hill_assisst_cont);
+    printf("Side Mirror With Indicators: %s\n",side_mirr_indic);
+    printf("Daytime Running Lamps: %s\n",drls);
+    printf("Climate Control: %s\n",clim_ctrl);
+    printf("Alloy Rims: %s\n",alloy);
+    printf("Push Start: %s\n",pust_strt);
+    printf("Auto Retractable Side Mirrors: %s\n",rect_mirr);
+    printf("Vehicle Stability Control: %s\n",vehi_stab_ctrl);
+    printf("Down Hill Assisst Control: %s\n",dwnhill_assisst_ctrl);
+}
 int main()
 {
     int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice;
@@ -171,7 +194,6 @@ int main()
                 switch (Car_model)
                 {
                 case 1:
-                    // taha
                     do
                     {
                         printf("Toyota Yaris 1.3L GLI MT\n");
@@ -196,17 +218,7 @@ int main()
                             break;
                         case 3:
                             printf("Car Features:\n");
-                            printf("Air Conditioning\n");
-                            printf("Power Windows\n");
-                            printf("Keyless Entry\n");
-                            printf("Bluetooth Connectivity\n");
-                            printf("3 Air Bags\n");
-                            printf("2 Speakers\n");
-                            printf("Side Mirrors with Indicators\n");
-                            printf("Power Steering\n");
-                            printf("Rear Parking Camera\n");
-                            printf("Hill Assist Control\n");
-                            printf("Defogger\n");
+                            features("Yes","No","3","2 Front Speakers","No","Yes","Yes","Yes","No","No","No","No","Yes","Yes","Yes","No","No","15-inch With Wheel Caps","No","No","Yes","No");
                             break;
                         case 4:
                             printf("Price:\n");
