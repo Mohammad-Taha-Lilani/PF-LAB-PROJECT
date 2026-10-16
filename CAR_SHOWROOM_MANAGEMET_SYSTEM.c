@@ -257,17 +257,18 @@ int main()
                         break;
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("3 Air Bags\n");
-                        printf("2 Speakers\n");
-                        printf("Side Mirrors with Indicators\n");
-                        printf("Power Steering\n");
-                        printf("Rear Parking Camera\n");
-                        printf("Hill Assist Control\n");
-                        printf("Defogger\n");
+                        features("Yes","No","3","2 Speakers","No","Yes","Yes","Yes","No","No","Yes","No","Yes","Yes","Yes","No","No","15-inch With Wheel Caps","No","No","Yes","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("3 Air Bags\n");
+                        // printf("2 Speakers\n");
+                        // printf("Side Mirrors with Indicators\n");
+                        // printf("Power Steering\n");
+                        // printf("Rear Parking Camera\n");
+                        // printf("Hill Assist Control\n");
+                        // printf("Defogger\n");
                         break;
                     case 4:
                         printf("Price:\n");
@@ -302,17 +303,18 @@ int main()
                         break;
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("3 Air Bags\n");
-                        printf("2 Speakers\n");
-                        printf("Side Mirrors with Indicators\n");
-                        printf("Power Steering\n");
-                        printf("Rear Parking Camera\n");
-                        printf("Hill Assist Control\n");
-                        printf("Defogger\n");
+                        features("Yes","No","3","2 Speakers","No","Yes","Yes","Yes","No","No","Yes","No","Yes","Yes","Yes","No","No","15-inch Alloy Rims","No","No","Yes","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("3 Air Bags\n");
+                        // printf("2 Speakers\n");
+                        // printf("Side Mirrors with Indicators\n");
+                        // printf("Power Steering\n");
+                        // printf("Rear Parking Camera\n");
+                        // printf("Hill Assist Control\n");
+                        // printf("Defogger\n");
                         break;
                     case 4:
                         printf("Price:\n");
@@ -347,17 +349,18 @@ int main()
                         break;
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("3 Air Bags\n");
-                        printf("2 Speakers\n");
-                        printf("Side Mirrors with Indicators\n");
-                        printf("Power Steering\n");
-                        printf("Rear Parking Camera\n");
-                        printf("Hill Assist Control\n");
-                        printf("Defogger\n");
+                        features("Yes","No","3","2 Speakers","No","Yes","Yes","Yes","No","No","Yes","No","Yes","Yes","Yes","No","No","15-inch Alloy Rims","No","No","Yes","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("3 Air Bags\n");
+                        // printf("2 Speakers\n");
+                        // printf("Side Mirrors with Indicators\n");
+                        // printf("Power Steering\n");
+                        // printf("Rear Parking Camera\n");
+                        // printf("Hill Assist Control\n");
+                        // printf("Defogger\n");
                         break;
                     case 4:
                         printf("Price:\n");
@@ -392,17 +395,18 @@ int main()
                         break;
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("3 Air Bags\n");
-                        printf("2 Speakers\n");
-                        printf("Side Mirrors with Indicators\n");
-                        printf("Power Steering\n");
-                        printf("Rear Parking Camera\n");
-                        printf("Hill Assist Control\n");
-                        printf("Defogger\n");
+                        features("Yes","No","3","4 Speakers","Yes","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","16-inch Alloy Rims","Yes","Yes","Yes","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("3 Air Bags\n");
+                        // printf("2 Speakers\n");
+                        // printf("Side Mirrors with Indicators\n");
+                        // printf("Power Steering\n");
+                        // printf("Rear Parking Camera\n");
+                        // printf("Hill Assist Control\n");
+                        // printf("Defogger\n");
                         break;
                     case 4:
                         printf("Price:\n");
@@ -437,17 +441,18 @@ int main()
                         break;
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("3 Air Bags\n");
-                        printf("2 Speakers\n");
-                        printf("Side Mirrors with Indicators\n");
-                        printf("Power Steering\n");
-                        printf("Rear Parking Camera\n");
-                        printf("Hill Assist Control\n");
-                        printf("Defogger\n");
+                        features("Yes","No","3","4 Speakers","Yes","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","16-inch Alloy Rims","Yes","Yes","Yes","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("3 Air Bags\n");
+                        // printf("2 Speakers\n");
+                        // printf("Side Mirrors with Indicators\n");
+                        // printf("Power Steering\n");
+                        // printf("Rear Parking Camera\n");
+                        // printf("Hill Assist Control\n");
+                        // printf("Defogger\n");
                         break;
                     case 4:
                         printf("Price:\n");
@@ -509,18 +514,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Halogen Headlamps\n");
-                        printf("LED Rear Lamps\n");
-                        printf("Power Windows\n");
-                        printf("Central Locking\n");
-                        printf("4.2-inch Color TFT Display\n");
-                        printf("9-inch Touchscreen Display\n");
-                        printf("6 Speakers\n");
-                        printf("Rear Camera\n");
-                        printf("Dual SRS Air Bags\n");
-                        printf("ABS with EBD and Brake Assist\n");
-                        printf("ISOFIX Child Seat Anchors\n");
-                        printf("Immobilizer\n");
+                        features("Yes","No","2","6 Speakers","No","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","No","No","No","No","No","No","Steel Rims","No","No","No","No");
+                        // printf("Halogen Headlamps\n");
+                        // printf("LED Rear Lamps\n");
+                        // printf("Power Windows\n");
+                        // printf("Central Locking\n");
+                        // printf("4.2-inch Color TFT Display\n");
+                        // printf("9-inch Touchscreen Display\n");
+                        // printf("6 Speakers\n");
+                        // printf("Rear Camera\n");
+                        // printf("Dual SRS Air Bags\n");
+                        // printf("ABS with EBD and Brake Assist\n");
+                        // printf("ISOFIX Child Seat Anchors\n");
+                        // printf("Immobilizer\n");
                         break;
 
                     case 4:
@@ -569,18 +575,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("LED Projection Headlamps\n");
-                        printf("Daytime Running Lamps\n");
-                        printf("16-inch Aluminium Alloy Rims\n");
-                        printf("Smart Entry\n");
-                        printf("Power Retractable Mirrors\n");
-                        printf("Eco Lamp with Monitor\n");
-                        printf("4.2-inch Color TFT Display\n");
-                        printf("9-inch Touchscreen Display\n");
-                        printf("Rear Camera\n");
-                        printf("6 Speakers\n");
-                        printf("Dual SRS Air Bags\n");
-                        printf("ABS with EBD and Brake Assist\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","No","No","No","Yes","Yes","No","16-inch Alloy Rims","No","Yes","No","No");
+                        // printf("LED Projection Headlamps\n");
+                        // printf("Daytime Running Lamps\n");
+                        // printf("16-inch Aluminium Alloy Rims\n");
+                        // printf("Smart Entry\n");
+                        // printf("Power Retractable Mirrors\n");
+                        // printf("Eco Lamp with Monitor\n");
+                        // printf("4.2-inch Color TFT Display\n");
+                        // printf("9-inch Touchscreen Display\n");
+                        // printf("Rear Camera\n");
+                        // printf("6 Speakers\n");
+                        // printf("Dual SRS Air Bags\n");
+                        // printf("ABS with EBD and Brake Assist\n");
                         break;
 
                     case 4:
@@ -628,18 +635,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("LED Projection Headlamps\n");
-                        printf("Daytime Running Lamps\n");
-                        printf("16-inch Aluminium Alloy Rims\n");
-                        printf("Automatic Climate Control\n");
-                        printf("Sunroof\n");
-                        printf("Push Start System\n");
-                        printf("Smart Key with Panic Button\n");
-                        printf("Smart Trunk Button\n");
-                        printf("9-inch Touchscreen Display\n");
-                        printf("Rear Camera\n");
-                        printf("6 Speakers\n");
-                        printf("Dual SRS Air Bags\n");
+                        features("Yes","Yes","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","No","No","No","Yes","Yes","Yes","16-inch Alloy Rims","Yes","Yes","No","No");
+                        // printf("LED Projection Headlamps\n");
+                        // printf("Daytime Running Lamps\n");
+                        // printf("16-inch Aluminium Alloy Rims\n");
+                        // printf("Automatic Climate Control\n");
+                        // printf("Sunroof\n");
+                        // printf("Push Start System\n");
+                        // printf("Smart Key with Panic Button\n");
+                        // printf("Smart Trunk Button\n");
+                        // printf("9-inch Touchscreen Display\n");
+                        // printf("Rear Camera\n");
+                        // printf("6 Speakers\n");
+                        // printf("Dual SRS Air Bags\n");
                         break;
 
                     case 4:
@@ -687,18 +695,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("LED Projection Headlamps\n");
-                        printf("Daytime Running Lamps\n");
-                        printf("16-inch Aluminium Alloy Rims\n");
-                        printf("Cruise Control\n");
-                        printf("Sports Mode\n");
-                        printf("Sequential Shiftmatic\n");
-                        printf("Automatic Climate Control\n");
-                        printf("4.2-inch Color TFT Display\n");
-                        printf("9-inch Touchscreen Display\n");
-                        printf("Rear Camera\n");
-                        printf("6 Speakers\n");
-                        printf("Dual SRS Air Bags\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","No","No","No","Yes","Yes","Yes","16-inch Alloy Rims","No","Yes","No","No");
+                        // printf("LED Projection Headlamps\n");
+                        // printf("Daytime Running Lamps\n");
+                        // printf("16-inch Aluminium Alloy Rims\n");
+                        // printf("Cruise Control\n");
+                        // printf("Sports Mode\n");
+                        // printf("Sequential Shiftmatic\n");
+                        // printf("Automatic Climate Control\n");
+                        // printf("4.2-inch Color TFT Display\n");
+                        // printf("9-inch Touchscreen Display\n");
+                        // printf("Rear Camera\n");
+                        // printf("6 Speakers\n");
+                        // printf("Dual SRS Air Bags\n");
                         break;
 
                     case 4:
@@ -746,19 +755,20 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Beige Interior\n");
-                        printf("Partial Leather Seats\n");
-                        printf("Sunroof\n");
-                        printf("Push Start System\n");
-                        printf("Smart Key with Panic Button\n");
-                        printf("Cruise Control\n");
-                        printf("Sports Mode\n");
-                        printf("Paddle Shift\n");
-                        printf("Auto Dimming Rear View Mirror\n");
-                        printf("Auto Rain Sensor\n");
-                        printf("Front and Rear Camera\n");
-                        printf("Toyota Connect\n");
-                        printf("Vehicle Stability Control\n");
+                        features("Yes","Yes","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","Yes","Yes","No","Yes","Yes","Yes","16-inch Alloy Rims","Yes","Yes","Yes","No");
+                        // printf("Beige Interior\n");
+                        // printf("Partial Leather Seats\n");
+                        // printf("Sunroof\n");
+                        // printf("Push Start System\n");
+                        // printf("Smart Key with Panic Button\n");
+                        // printf("Cruise Control\n");
+                        // printf("Sports Mode\n");
+                        // printf("Paddle Shift\n");
+                        // printf("Auto Dimming Rear View Mirror\n");
+                        // printf("Auto Rain Sensor\n");
+                        // printf("Front and Rear Camera\n");
+                        // printf("Toyota Connect\n");
+                        // printf("Vehicle Stability Control\n");
                         break;
 
                     case 4:
@@ -806,19 +816,20 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Black Interior\n");
-                        printf("Partial Leather Seats\n");
-                        printf("Sunroof\n");
-                        printf("Push Start System\n");
-                        printf("Smart Key with Panic Button\n");
-                        printf("Cruise Control\n");
-                        printf("Sports Mode\n");
-                        printf("Paddle Shift\n");
-                        printf("Auto Dimming Rear View Mirror\n");
-                        printf("Auto Rain Sensor\n");
-                        printf("Front and Rear Camera\n");
-                        printf("Toyota Connect\n");
-                        printf("Vehicle Stability Control\n");
+                        features("Yes","Yes","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Touchscreen","Yes","Yes","Yes","No","Yes","Yes","Yes","16-inch Alloy Rims","Yes","Yes","Yes","No");
+                        // printf("Black Interior\n");
+                        // printf("Partial Leather Seats\n");
+                        // printf("Sunroof\n");
+                        // printf("Push Start System\n");
+                        // printf("Smart Key with Panic Button\n");
+                        // printf("Cruise Control\n");
+                        // printf("Sports Mode\n");
+                        // printf("Paddle Shift\n");
+                        // printf("Auto Dimming Rear View Mirror\n");
+                        // printf("Auto Rain Sensor\n");
+                        // printf("Front and Rear Camera\n");
+                        // printf("Toyota Connect\n");
+                        // printf("Vehicle Stability Control\n");
                         break;
 
                     case 4:
@@ -889,18 +900,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Halogen Headlamps\n");
-                        printf("LED Rear Lamps\n");
-                        printf("17-inch Alloy Wheels\n");
-                        printf("Power Windows\n");
-                        printf("Keyless Entry\n");
-                        printf("Push Start\n");
-                        printf("Rear Camera\n");
-                        printf("ABS with EBD and Brake Assist\n");
-                        printf("Vehicle Stability Control\n");
-                        printf("Hill Start Assist Control\n");
-                        printf("Dual SRS Air Bags\n");
-                        printf("Downhill Assist Control\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","Yes","Touchscreen Display","Yes","No","Yes","Yes","Yes","No","Yes","17-inch Alloy Wheels","Yes","Yes","Yes","Yes");
+                        // printf("Halogen Headlamps\n");
+                        // printf("LED Rear Lamps\n");
+                        // printf("17-inch Alloy Wheels\n");
+                        // printf("Power Windows\n");
+                        // printf("Keyless Entry\n");
+                        // printf("Push Start\n");
+                        // printf("Rear Camera\n");
+                        // printf("ABS with EBD and Brake Assist\n");
+                        // printf("Vehicle Stability Control\n");
+                        // printf("Hill Start Assist Control\n");
+                        // printf("Dual SRS Air Bags\n");
+                        // printf("Downhill Assist Control\n");
                         break;
 
                     case 4:
@@ -949,18 +961,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("17-inch Alloy Wheels\n");
-                        printf("Leather Seats\n");
-                        printf("Automatic Climate Control\n");
-                        printf("Push Start\n");
-                        printf("Cruise Control\n");
-                        printf("Rear Camera\n");
-                        printf("Vehicle Stability Control\n");
-                        printf("Hill Start Assist Control\n");
-                        printf("Downhill Assist Control\n");
-                        printf("Dual SRS Air Bags\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","Yes","Touchscreen Display","Yes","No","Yes","Yes","Yes","Yes","Yes","17-inch Alloy Wheels","Yes","Yes","Yes","Yes");
+                        // printf("LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("17-inch Alloy Wheels\n");
+                        // printf("Leather Seats\n");
+                        // printf("Automatic Climate Control\n");
+                        // printf("Push Start\n");
+                        // printf("Cruise Control\n");
+                        // printf("Rear Camera\n");
+                        // printf("Vehicle Stability Control\n");
+                        // printf("Hill Start Assist Control\n");
+                        // printf("Downhill Assist Control\n");
+                        // printf("Dual SRS Air Bags\n");
                         break;
 
                     case 4:
@@ -1008,18 +1021,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("18-inch Alloy Wheels\n");
-                        printf("Leather Seats\n");
-                        printf("Dual Zone Automatic Climate Control\n");
-                        printf("Push Start\n");
-                        printf("Cruise Control\n");
-                        printf("Rear Camera\n");
-                        printf("Front and Rear Clearance Sonar\n");
-                        printf("Downhill Assist Control\n");
-                        printf("Vehicle Stability Control\n");
-                        printf("Dual SRS Air Bags\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","Yes","Touchscreen Display","Yes","No","Yes","Yes","Yes","Yes","Dual Zone Automatic","18-inch Alloy Wheels","Yes","Yes","Yes","Yes");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("18-inch Alloy Wheels\n");
+                        // printf("Leather Seats\n");
+                        // printf("Dual Zone Automatic Climate Control\n");
+                        // printf("Push Start\n");
+                        // printf("Cruise Control\n");
+                        // printf("Rear Camera\n");
+                        // printf("Front and Rear Clearance Sonar\n");
+                        // printf("Downhill Assist Control\n");
+                        // printf("Vehicle Stability Control\n");
+                        // printf("Dual SRS Air Bags\n");
                         break;
 
                     case 4:
@@ -1067,18 +1081,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("18-inch Alloy Wheels\n");
-                        printf("Leather Seats\n");
-                        printf("Dual Zone Automatic Climate Control\n");
-                        printf("Smart Key\n");
-                        printf("Push Start\n");
-                        printf("Cruise Control\n");
-                        printf("Front and Rear Clearance Sonar\n");
-                        printf("Rear Camera\n");
-                        printf("Downhill Assist Control\n");
-                        printf("Vehicle Stability Control\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","Yes","Touchscreen Display","Yes","No","Yes","Yes","Yes","Yes","Dual Zone Automatic","18-inch Alloy Wheels","Yes","Yes","Yes","Yes");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("18-inch Alloy Wheels\n");
+                        // printf("Leather Seats\n");
+                        // printf("Dual Zone Automatic Climate Control\n");
+                        // printf("Smart Key\n");
+                        // printf("Push Start\n");
+                        // printf("Cruise Control\n");
+                        // printf("Front and Rear Clearance Sonar\n");
+                        // printf("Rear Camera\n");
+                        // printf("Downhill Assist Control\n");
+                        // printf("Vehicle Stability Control\n");
                         break;
 
                     case 4:
@@ -1126,16 +1141,17 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Air Conditioning\n");
-                        printf("Power Steering\n");
-                        printf("Halogen Headlamps\n");
-                        printf("Deck Guard Frame\n");
-                        printf("ABS\n");
-                        printf("Dual SRS Air Bags\n");
-                        printf("Immobilizer\n");
-                        printf("3-Point Seat Belts\n");
-                        printf("High Mount Stop Lamp\n");
-                        printf("Rear Mud Guards\n");
+                        features("No","No","2","2 Speakers","No","No","Yes","No","No","No","No","No","No","No","No","No","Manual AC","Steel Rims","No","No","No","No");
+                        // printf("Air Conditioning\n");
+                        // printf("Power Steering\n");
+                        // printf("Halogen Headlamps\n");
+                        // printf("Deck Guard Frame\n");
+                        // printf("ABS\n");
+                        // printf("Dual SRS Air Bags\n");
+                        // printf("Immobilizer\n");
+                        // printf("3-Point Seat Belts\n");
+                        // printf("High Mount Stop Lamp\n");
+                        // printf("Rear Mud Guards\n");
                         break;
 
                     case 4:
@@ -1183,18 +1199,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("9-inch Capacitive Display\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("Apple CarPlay\n");
-                        printf("Android Auto\n");
-                        printf("2 Speakers\n");
-                        printf("Rear Camera\n");
-                        printf("Power Steering\n");
-                        printf("Power Windows\n");
-                        printf("Halogen Headlamps\n");
-                        printf("ABS\n");
-                        printf("Dual SRS Air Bags\n");
-                        printf("Immobilizer\n");
+                        features("Yes","No","2","2 Speakers","No","Yes","Yes","Yes","No","9-inch Display","Yes","No","No","No","No","No","Manual AC","Steel Rims","No","No","No","No");
+                        // printf("9-inch Capacitive Display\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("Apple CarPlay\n");
+                        // printf("Android Auto\n");
+                        // printf("2 Speakers\n");
+                        // printf("Rear Camera\n");
+                        // printf("Power Steering\n");
+                        // printf("Power Windows\n");
+                        // printf("Halogen Headlamps\n");
+                        // printf("ABS\n");
+                        // printf("Dual SRS Air Bags\n");
+                        // printf("Immobilizer\n");
                         break;
 
                     case 4:
@@ -1242,18 +1259,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("9-inch Capacitive Display\n");
-                        printf("Bluetooth Connectivity\n");
-                        printf("Apple CarPlay\n");
-                        printf("Android Auto\n");
-                        printf("4 Speakers\n");
-                        printf("Rear Camera\n");
-                        printf("Power Windows\n");
-                        printf("Power Retractable Mirrors\n");
-                        printf("Smart Auto Headlamp System\n");
-                        printf("Vehicle Stability Control\n");
-                        printf("Hill Start Assist Control\n");
-                        printf("Dual SRS Air Bags\n");
+                        features("Yes","No","2","4 Speakers","No","Yes","Yes","Yes","No","9-inch Display","Yes","No","No","Yes","Yes","No","Manual AC","Alloy Wheels","No","Yes","Yes","No");
+                        // printf("9-inch Capacitive Display\n");
+                        // printf("Bluetooth Connectivity\n");
+                        // printf("Apple CarPlay\n");
+                        // printf("Android Auto\n");
+                        // printf("4 Speakers\n");
+                        // printf("Rear Camera\n");
+                        // printf("Power Windows\n");
+                        // printf("Power Retractable Mirrors\n");
+                        // printf("Smart Auto Headlamp System\n");
+                        // printf("Vehicle Stability Control\n");
+                        // printf("Hill Start Assist Control\n");
+                        // printf("Dual SRS Air Bags\n");
                         break;
 
                     case 4:
@@ -1296,20 +1314,21 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Leather Seats\n");
-                        printf("Dual Zone Automatic Climate Control\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("Push Start\n");
-                        printf("Smart Key\n");
-                        printf("9-inch Display\n");
-                        printf("Apple CarPlay\n");
-                        printf("Android Auto\n");
-                        printf("6 Speakers\n");
-                        printf("Rear Camera\n");
-                        printf("ABS\n");
-                        printf("Air Bags\n");
-                        printf("Vehicle Stability Control\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Display","Yes","No","No","Yes","Yes","Yes","Dual Zone Automatic","Alloy Wheels","Yes","Yes","Yes","No");
+                        // printf("Leather Seats\n");
+                        // printf("Dual Zone Automatic Climate Control\n");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("Push Start\n");
+                        // printf("Smart Key\n");
+                        // printf("9-inch Display\n");
+                        // printf("Apple CarPlay\n");
+                        // printf("Android Auto\n");
+                        // printf("6 Speakers\n");
+                        // printf("Rear Camera\n");
+                        // printf("ABS\n");
+                        // printf("Air Bags\n");
+                        // printf("Vehicle Stability Control\n");
                         break;
 
                     case 4:
@@ -1352,22 +1371,23 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("Leather Seats\n");
-                        printf("Dual Zone Automatic Climate Control\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("Rocco Exterior Styling\n");
-                        printf("Push Start\n");
-                        printf("Smart Key\n");
-                        printf("9-inch Display\n");
-                        printf("Apple CarPlay\n");
-                        printf("Android Auto\n");
-                        printf("6 Speakers\n");
-                        printf("Rear Camera\n");
-                        printf("Front and Rear Clearance Sonar\n");
-                        printf("Vehicle Stability Control\n");
-                        printf("ABS\n");
-                        printf("Air Bags\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Display","Yes","No","Yes","Yes","Yes","Yes","Dual Zone Automatic","Alloy Wheels","Yes","Yes","Yes","No");
+                        // printf("Leather Seats\n");
+                        // printf("Dual Zone Automatic Climate Control\n");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("Rocco Exterior Styling\n");
+                        // printf("Push Start\n");
+                        // printf("Smart Key\n");
+                        // printf("9-inch Display\n");
+                        // printf("Apple CarPlay\n");
+                        // printf("Android Auto\n");
+                        // printf("6 Speakers\n");
+                        // printf("Rear Camera\n");
+                        // printf("Front and Rear Clearance Sonar\n");
+                        // printf("Vehicle Stability Control\n");
+                        // printf("ABS\n");
+                        // printf("Air Bags\n");
                         break;
 
                     case 4:
@@ -1429,18 +1449,19 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("GR-S Exterior Styling\n");
-                        printf("GR-S Alloy Wheels\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("GR-S Leather Interior\n");
-                        printf("Dual Zone Automatic Climate Control\n");
-                        printf("GR-S Steering Wheel\n");
-                        printf("Push Start\n");
-                        printf("Cruise Control\n");
-                        printf("Front and Rear Clearance Sonar\n");
-                        printf("Downhill Assist Control\n");
-                        printf("Vehicle Stability Control\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","Yes","Touchscreen Display","Yes","No","Yes","Yes","Yes","Yes","Dual Zone Automatic","GR-S Alloy Wheels","Yes","Yes","Yes","Yes");
+                        // printf("GR-S Exterior Styling\n");
+                        // printf("GR-S Alloy Wheels\n");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("GR-S Leather Interior\n");
+                        // printf("Dual Zone Automatic Climate Control\n");
+                        // printf("GR-S Steering Wheel\n");
+                        // printf("Push Start\n");
+                        // printf("Cruise Control\n");
+                        // printf("Front and Rear Clearance Sonar\n");
+                        // printf("Downhill Assist Control\n");
+                        // printf("Vehicle Stability Control\n");
                         break;
 
                     case 4:
@@ -1488,20 +1509,21 @@ int main()
 
                     case 3:
                         printf("Car Features:\n");
-                        printf("GR-S Exterior Styling\n");
-                        printf("GR-S Design Over Fender\n");
-                        printf("Bi-Beam LED Headlamps\n");
-                        printf("LED Daytime Running Lamps\n");
-                        printf("GR-S LED Fog Lamps\n");
-                        printf("GR-S Leather Seats\n");
-                        printf("GR-S Leather Steering Wheel\n");
-                        printf("GR Smart Key\n");
-                        printf("9-inch Capacitive Display\n");
-                        printf("Apple CarPlay\n");
-                        printf("Android Auto\n");
-                        printf("6 Speakers\n");
-                        printf("360 Degree View Camera\n");
-                        printf("Front and Rear Clearance Sonar\n");
+                        features("Yes","No","2","6 Speakers","Yes","Yes","Yes","Yes","No","9-inch Display","360 Degree Camera","Yes","Yes","Yes","Yes","Yes","Dual Zone Automatic","GR-S Alloy Wheels","Yes","Yes","Yes","No");
+                        // printf("GR-S Exterior Styling\n");
+                        // printf("GR-S Design Over Fender\n");
+                        // printf("Bi-Beam LED Headlamps\n");
+                        // printf("LED Daytime Running Lamps\n");
+                        // printf("GR-S LED Fog Lamps\n");
+                        // printf("GR-S Leather Seats\n");
+                        // printf("GR-S Leather Steering Wheel\n");
+                        // printf("GR Smart Key\n");
+                        // printf("9-inch Capacitive Display\n");
+                        // printf("Apple CarPlay\n");
+                        // printf("Android Auto\n");
+                        // printf("6 Speakers\n");
+                        // printf("360 Degree View Camera\n");
+                        // printf("Front and Rear Clearance Sonar\n");
                         break;
 
                     case 4:
