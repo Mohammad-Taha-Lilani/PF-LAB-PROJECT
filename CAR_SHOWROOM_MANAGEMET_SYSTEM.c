@@ -1594,7 +1594,125 @@ int main()
             break;
         case 2:
             printf("Book Test Drive:\n");
+            carcategory();
 
+            td_category:
+            printf("\nEnter Car Category: ");
+            scanf("%d", &Car_category);
+
+            if (Car_category < 1 || Car_category > 4)
+            {
+                printf("Invalid Category!\n");
+                goto td_category;
+            }
+
+            getcategory(Car_category, selectedcategory);
+            switch (Car_category)
+            {
+            case 1:
+                compactsedan();
+                break;
+            case 2:
+                Sedan();
+                break;
+            case 3:
+                suv();
+                break;
+            case 4:
+                GR();
+                break;
+            }
+
+            td_model:
+            printf("\nEnter Your Choice: ");
+            scanf("%d", &Car_model);
+
+            getmodel(Car_category, Car_model, selectedmodel);
+
+            if (strcmp(selectedmodel, "Invalid Model") == 0)
+            {
+                printf("Invalid Model!, please try again\n");
+                goto td_model;
+            }
+
+            if (Car_category == 1)
+            {
+                yariscolor();
+            }
+            else if (Car_category == 2)
+            {
+                corollacolor();
+            }
+            else if (Car_category == 3)
+            {
+                if (Car_model >= 1 && Car_model <= 4)
+                    fortunercolor();
+                else
+                    hiluxcolor();
+            }
+            else if (Car_category == 4)
+            {
+                if (Car_model == 1)
+                    fortunercolor();
+                else
+                    hiluxcolor();
+            }
+
+            td_color:
+            printf("\nEnter Color Number: ");
+            scanf("%d", &color);
+
+            getcolor(Car_category, Car_model, color, selectedcolor);
+
+            if (strcmp(selectedcolor, "Invalid Color") == 0 ||
+                strcmp(selectedcolor, "Invalid Model") == 0)
+            {
+                printf("Invalid Color!\n");
+                goto td_color;
+            }
+
+            printf("\n===== TEST DRIVE SELECTION =====\n");
+            printf("Car Category: %s\n", selectedcategory);
+            printf("Car Model: %s\n", selectedmodel);
+            printf("Selected Color: %s\n", selectedcolor);
+            printf("Is Your Test Drive Booking Confirm\n");
+            printf("1.Yes\n2.No\n");
+
+            td_confirm:
+            scanf("%d", &bookingstatus);
+            switch (bookingstatus)
+            {
+            case 1:
+                printf("Enter Your Name\n");
+                scanf(" %29[^\n]", name);
+                printf("Enter Your Phone Number\n");
+                scanf(" %19[^\n]", phonenumber);
+                printf("Enter Your City\n");
+                scanf(" %29[^\n]", city);
+                printf("Enter Preferred Date (DD/MM/YYYY)\n");
+                scanf(" %19[^\n]", testdate);
+                printf("Enter Preferred Time (e.g. 3:00 PM)\n");
+                scanf(" %19[^\n]", testtime);
+
+                printf("\n===== TEST DRIVE BOOKING SUMMARY =====\n");
+                printf("Car Category: %s\n", selectedcategory);
+                printf("Car Model: %s\n", selectedmodel);
+                printf("Selected Color: %s\n", selectedcolor);
+                printf("Name: %s\n", name);
+                printf("Contact: %s\n", phonenumber);
+                printf("City: %s\n", city);
+                printf("Date: %s\n", testdate);
+                printf("Time: %s\n", testtime);
+                printf("TEST DRIVE BOOKED\n");
+                break;
+            case 2:
+                printf("Thankyou For Visiting\n");
+                return 0;
+
+            default:
+                printf("Invalid Choice\n");
+                goto td_confirm;
+            }
             break;
         case 3:
             printf("Book Car:\n");
