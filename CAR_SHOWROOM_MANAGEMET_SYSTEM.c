@@ -1636,46 +1636,9 @@ int main()
                 goto td_model;
             }
 
-            if (Car_category == 1)
-            {
-                yariscolor();
-            }
-            else if (Car_category == 2)
-            {
-                corollacolor();
-            }
-            else if (Car_category == 3)
-            {
-                if (Car_model >= 1 && Car_model <= 4)
-                    fortunercolor();
-                else
-                    hiluxcolor();
-            }
-            else if (Car_category == 4)
-            {
-                if (Car_model == 1)
-                    fortunercolor();
-                else
-                    hiluxcolor();
-            }
-
-            td_color:
-            printf("\nEnter Color Number: ");
-            scanf("%d", &color);
-
-            getcolor(Car_category, Car_model, color, selectedcolor);
-
-            if (strcmp(selectedcolor, "Invalid Color") == 0 ||
-                strcmp(selectedcolor, "Invalid Model") == 0)
-            {
-                printf("Invalid Color!\n");
-                goto td_color;
-            }
-
             printf("\n===== TEST DRIVE SELECTION =====\n");
             printf("Car Category: %s\n", selectedcategory);
             printf("Car Model: %s\n", selectedmodel);
-            printf("Selected Color: %s\n", selectedcolor);
             printf("Is Your Test Drive Booking Confirm\n");
             printf("1.Yes\n2.No\n");
 
@@ -1698,7 +1661,6 @@ int main()
                 printf("\n===== TEST DRIVE BOOKING SUMMARY =====\n");
                 printf("Car Category: %s\n", selectedcategory);
                 printf("Car Model: %s\n", selectedmodel);
-                printf("Selected Color: %s\n", selectedcolor);
                 printf("Name: %s\n", name);
                 printf("Contact: %s\n", phonenumber);
                 printf("City: %s\n", city);
