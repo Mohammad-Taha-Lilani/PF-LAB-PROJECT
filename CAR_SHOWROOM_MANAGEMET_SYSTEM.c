@@ -521,6 +521,7 @@ int main()
     char selectedcolor[50];
     char selectedprice[32], name[100], city[100], phonenumber[20];
     char filerstatus[4], installments[4];
+    char testdate[20], testtime[20];
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
     printf("\n====================================\n");
