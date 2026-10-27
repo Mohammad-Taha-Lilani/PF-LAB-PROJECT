@@ -624,22 +624,9 @@ void bookService(){
 }
 int main()
 {
-    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice;
-    int Car_status, color, bookingstatus, filerchoice, installmentchoice;
-    int choice, Car_Details;
-    int car1, car2;
-    int price1, price2;
-    int engine1, engine2;
-    int seats1, seats2;
-    int airbags1, airbags2;
-    int speakers1, speakers2;
-    int transmission1, transmission2;
-    char selectedcategory[50];
-    char selectedmodel[100];
-    char selectedcolor[50];
-    char selectedprice[32], name[100], city[100], phonenumber[20];
-    char filerstatus[4], installments[4];
-    char testdate[20], testtime[20];
+    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details;
+    int car1, car2, price1, price2, engine1, engine2, seats1, seats2, airbags1, airbags2, speakers1, speakers2, transmission1, transmission2;
+    char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20];
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
     printf("\n====================================\n");
