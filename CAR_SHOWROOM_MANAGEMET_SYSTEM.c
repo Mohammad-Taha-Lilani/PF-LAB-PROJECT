@@ -626,7 +626,7 @@ int main()
 {
     int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details;
     int car1, car2, price1, price2, engine1, engine2, seats1, seats2, airbags1, airbags2, speakers1, speakers2, transmission1, transmission2;
-    char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20];
+    char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20], bookingdate[20], bookingtime[20],address[60], cnic[16];
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
     printf("\n====================================\n");
@@ -1891,10 +1891,19 @@ int main()
             case 1:
                 printf("Enter Your Name\n");
                 scanf(" %29[^\n]", name);
-                printf("Enter Your Phone Number\n");
+                printf("Enter Your Phone Number (03XX-XXXXXXX)\n");
                 scanf(" %19[^\n]", phonenumber);
+                printf("Enter Your CNIC (42XXX-XXXXXXX-X)\n");
+                scanf(" %15[^\n]", cnic);
                 printf("Enter Your City\n");
                 scanf(" %29[^\n]", city);
+                printf("Enter Your Address");
+                scanf(" %59[^\n]", address);
+                printf("Enter Preferred Date (DD/MM/YYYY)\n");
+                scanf(" %19[^\n]", bookingdate);
+                printf("Enter Preferred Time (e.g. 3:00 PM)\n");
+                scanf(" %19[^\n]", bookingtime);
+
                 printf("Are You Filer\n");
                 printf("1. Yes\n2. No\n");
                 default_31:
