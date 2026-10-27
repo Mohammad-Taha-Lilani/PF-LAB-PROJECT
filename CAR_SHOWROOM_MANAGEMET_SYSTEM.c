@@ -80,31 +80,40 @@ void getprice(char price[])
     printf("Price: %s\n", price);
 }
 
-void enterprice(char selectedprice[], int category, int model)
+void enterprice(char selectedprice[], int category, int model, int *carprice)
 {
     switch (category)
     {
     case 1:
         switch (model)
         {
-        case 1:strcpy(selectedprice, "PKR 4,649,000");break;
+        case 1:
+            strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
+            break;
         case 2:
             strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
             break;
         case 3:
             strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
             break;
         case 4:
             strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
             break;
         case 5:
             strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
             break;
         case 6:
             strcpy(selectedprice, "PKR 4,649,000");
+            *carprice = 4649000;
             break;
         default:
             strcpy(selectedprice, "Invalid Model");
+            *carprice = 0;
             break;
         }
         break;
@@ -114,24 +123,37 @@ void enterprice(char selectedprice[], int category, int model)
         {
         case 1:
             strcpy(selectedprice, "PKR 6,202,000");
+            *carprice = 6202000;
             break;
+
         case 2:
             strcpy(selectedprice, "PKR 6,802,000");
+            *carprice = 6802000;
             break;
+
         case 3:
             strcpy(selectedprice, "PKR 7,339,000");
+            *carprice = 7339000;
             break;
+
         case 4:
             strcpy(selectedprice, "PKR 7,029,000");
+            *carprice = 7029000;
             break;
+
         case 5:
             strcpy(selectedprice, "PKR 7,669,000");
+            *carprice = 7669000;
             break;
+
         case 6:
             strcpy(selectedprice, "PKR 7,709,000");
+            *carprice = 7709000;
             break;
+
         default:
             strcpy(selectedprice, "Invalid Model");
+            *carprice = 0;
             break;
         }
         break;
@@ -141,33 +163,52 @@ void enterprice(char selectedprice[], int category, int model)
         {
         case 1:
             strcpy(selectedprice, "PKR 12,435,000");
+            *carprice = 12435000;
             break;
+
         case 2:
             strcpy(selectedprice, "PKR 14,935,000");
+            *carprice = 14935000;
             break;
+
         case 3:
             strcpy(selectedprice, "PKR 18,539,000");
+            *carprice = 18539000;
             break;
+
         case 4:
             strcpy(selectedprice, "PKR 19,569,000");
+            *carprice = 19569000;
             break;
+
         case 5:
             strcpy(selectedprice, "PKR 10,100,000");
+            *carprice = 10100000;
             break;
+
         case 6:
             strcpy(selectedprice, "PKR 11,379,000");
+            *carprice = 11379000;
             break;
+
         case 7:
             strcpy(selectedprice, "PKR 12,329,000");
+            *carprice = 12329000;
             break;
+
         case 8:
             strcpy(selectedprice, "PKR 14,279,000");
+            *carprice = 14279000;
             break;
+
         case 9:
             strcpy(selectedprice, "PKR 14,869,000");
+            *carprice = 14869000;
             break;
+
         default:
             strcpy(selectedprice, "Invalid Model");
+            *carprice = 0;
             break;
         }
         break;
@@ -177,18 +218,24 @@ void enterprice(char selectedprice[], int category, int model)
         {
         case 1:
             strcpy(selectedprice, "PKR 20,499,000");
+            *carprice = 20499000;
             break;
+
         case 2:
             strcpy(selectedprice, "PKR 15,839,000");
+            *carprice = 15839000;
             break;
+
         default:
             strcpy(selectedprice, "Invalid Model");
+            *carprice = 0;
             break;
         }
         break;
 
     default:
         strcpy(selectedprice, "Invalid Category");
+        *carprice = 0;
         break;
     }
 }
@@ -624,8 +671,8 @@ void bookService(){
 }
 int main()
 {
-    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details;
-    int car1, car2, price1, price2, engine1, engine2, seats1, seats2, airbags1, airbags2, speakers1, speakers2, transmission1, transmission2;
+    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice;
+    float downpayment, remainingamount, interestrate, totalamount, monthlyinstallment;
     char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20], bookingdate[20], bookingtime[20],address[60], cnic[16];
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
@@ -1875,7 +1922,7 @@ int main()
                 goto default_color;
                 break;
             }
-            enterprice(selectedprice, Car_category, Car_model);
+            enterprice(selectedprice, Car_category, Car_model, &carprice);
 
             printf("\n===== SELECTION SUMMARY =====\n");
             printf("Car Category: %s\n", selectedcategory);
@@ -1897,7 +1944,7 @@ int main()
                 scanf(" %15[^\n]", cnic);
                 printf("Enter Your City\n");
                 scanf(" %29[^\n]", city);
-                printf("Enter Your Address");
+                printf("Enter Your Address\n");
                 scanf(" %59[^\n]", address);
                 printf("Enter Preferred Date (DD/MM/YYYY)\n");
                 scanf(" %19[^\n]", bookingdate);
@@ -1920,21 +1967,75 @@ int main()
                     printf("Invalid Choice\n");
                     goto default_31;
                 }
-                printf("Installment\n");
-                printf("1.Yes\n2.No\n");
+
+                printf("\nDo you want to buy the car on installments?\n");
+                printf("1. Yes\n");
+                printf("2. No\n");
+                printf("Enter your choice: ");
                 default_32:
-                scanf("%d",&installmentchoice);
-                
+                scanf("%d", &installmentchoice);
+
                 switch (installmentchoice)
                 {
                 case 1:
                     strcpy(installments, "Yes");
+
+                    printf("\nSelect Installment Duration:\n");
+                    printf("1. 12 Months - No Interest\n");
+                    printf("2. 24 Months - 10%% Interest\n");
+                    printf("3. 36 Months - 15%% Interest\n");
+                    printf("Enter Your Choice: ");
+
+                default_33:
+                    scanf("%d", &installmentmonths);
+
+                    switch (installmentmonths)
+                    {
+                    case 1:
+                        installmentmonths = 12;
+                        interestrate = 0;
+                        break;
+
+                    case 2:
+                        installmentmonths = 24;
+                        interestrate = 0.10;
+                        break;
+
+                    case 3:
+                        installmentmonths = 36;
+                        interestrate = 0.15;
+                        break;
+
+                    default:
+                        printf("Invalid Choice! Enter 1, 2, or 3: ");
+                        goto default_33;
+                    }
+
+                    downpayment = carprice * 0.30;
+                    remainingamount = carprice - downpayment;
+
+                    totalamount = remainingamount +
+                                  (remainingamount * interestrate);
+
+                    monthlyinstallment = totalamount / installmentmonths;
+
+                    printf("\n----- INSTALLMENT DETAILS -----\n");
+                    printf("Car Price: Rs. %d\n", carprice);
+                    printf("Down Payment (30%%): Rs. %.2f\n", downpayment);
+                    printf("Remaining Amount: Rs. %.2f\n", remainingamount);
+                    printf("Interest Rate: %.0f%%\n", interestrate * 100);
+                    printf("Total Amount After Interest: Rs. %.2f\n", totalamount);
+                    printf("Duration: %d Months\n", installmentmonths);
+                    printf("Monthly Installment: Rs. %.2f\n", monthlyinstallment);
                     break;
+
                 case 2:
                     strcpy(installments, "No");
+                    printf("You selected full payment.\n");
                     break;
+
                 default:
-                    printf("Invalid Choice\n");
+                    printf("Invalid Choice! Enter 1 or 2: ");
                     goto default_32;
                 }
                 printf("\n===== BOOKING SUMMARY =====\n");
@@ -1947,6 +2048,14 @@ int main()
                 printf("City: %s\n", city);
                 printf("Filer: %s\n", filerstatus);
                 printf("Installments: %s\n", installments);
+                if (strcmp(installments, "Yes") == 0)
+                {
+                    printf("Down Payment: Rs. %.2f\n", downpayment);
+                    printf("Remaining Amount: Rs. %.2f\n", remainingamount);
+                    printf("Total Amount After Interest: Rs. %.2f\n", totalamount);
+                    printf("Installment Duration: %d Months\n", installmentmonths);
+                    printf("Monthly Installment: Rs. %.2f\n", monthlyinstallment);
+                }
                 printf("BOOKING CONFIRMED\n");
                 break;
             case 2:
@@ -1978,6 +2087,6 @@ int main()
     default:
         printf("Enter your choice again\n");
         break;
-    }
+     }
     return 0;
 }
