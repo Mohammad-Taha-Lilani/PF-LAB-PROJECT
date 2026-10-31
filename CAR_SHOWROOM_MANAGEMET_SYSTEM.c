@@ -674,6 +674,7 @@ int main()
     int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice;
     float downpayment, remainingamount, interestrate, totalamount, monthlyinstallment;
     char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20], bookingdate[20], bookingtime[20],address[60], cnic[16];
+    float taxrate, taxamount, final_car_price;
     printf("\n====================================\n");
     printf("\nWELCOME TO TOYATA PAKISTAN\n");
     printf("\n====================================\n");
@@ -1959,15 +1960,18 @@ int main()
                 {
                 case 1:
                     strcpy(filerstatus, "Yes");
+                    taxrate = 0.10;
                     break;
                 case 2:
                     strcpy(filerstatus, "No");
+                    taxrate = 0.18;
                     break;
                 default:
                     printf("Invalid Choice\n");
                     goto default_31;
                 }
-
+                taxamount = carprice * taxrate;
+                final_car_price = carprice + taxamount;
                 printf("\nDo you want to buy the car on installments?\n");
                 printf("1. Yes\n");
                 printf("2. No\n");
@@ -2010,12 +2014,10 @@ int main()
                         printf("Invalid Choice! Enter 1, 2, or 3: ");
                         goto default_33;
                     }
+                    downpayment = final_car_price * 0.30;
+                    remainingamount = final_car_price - downpayment;
 
-                    downpayment = carprice * 0.30;
-                    remainingamount = carprice - downpayment;
-
-                    totalamount = remainingamount +
-                                  (remainingamount * interestrate);
+                    totalamount = remainingamount +(remainingamount * interestrate);
 
                     monthlyinstallment = totalamount / installmentmonths;
 
@@ -2043,6 +2045,10 @@ int main()
                 printf("Car Model: %s\n", selectedmodel);
                 printf("Selected Color: %s\n", selectedcolor);
                 printf("Price: %s\n", selectedprice);
+                printf("Filer Status: %s\n", filerstatus);
+                printf("Tax Rate: %.0f%%\n", taxrate * 100);
+                printf("Tax Amount: Rs. %.2f\n", taxamount);
+                printf("Total Price After Tax: Rs. %.2f\n", final_car_price);
                 printf("Name: %s\n", name);
                 printf("Contact: %s\n", phonenumber);
                 printf("City: %s\n", city);
