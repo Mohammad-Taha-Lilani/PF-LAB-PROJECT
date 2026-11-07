@@ -1,6 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 
+#define AVAILABLE 1
+#define BOOKED 2
+#define SOLD 3
+
+struct Expense
+{
+    double amount;
+    char description[100];
+};
+
+struct Car
+{
+    int carID;
+    int category;
+    int model;
+    char carName[100];
+    char color[50];
+    int purchaseCost;
+    int sellingPrice;
+    int status;
+};
+
 void yariscolor()
 {
     printf("Car Colors:\n");
@@ -669,9 +691,349 @@ void bookService(){
         printf("\nInvalid confirmation choice.\n");
     }
 }
+
+/* ---------------- INVENTORY AND FILE HANDLING ---------------- */
+int getNextCarID()
+{
+    FILE *fp;
+    struct Car car;
+    int maxID = 0;
+
+    fp = fopen("cars.dat", "rb");
+    if (fp == NULL) return 1;
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        if (car.carID > maxID) maxID = car.carID;
+
+    fclose(fp);
+    return maxID + 1;
+}
+
+int countAvailableCar(int category, int model, const char color[])
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    struct Car car;
+    int found = 0;
+    if (fp == NULL) return 0;
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        if (car.category == category && car.model == model &&
+            strcmp(car.color, color) == 0 && car.status == AVAILABLE)
+            found++;
+    fclose(fp);
+    return found;
+}
+
+int reserveCar(int category, int model, const char color[])
+{
+    FILE *fp = fopen("cars.dat", "rb+");
+    struct Car car;
+    if (fp == NULL) return -1;
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.category == category && car.model == model &&
+            strcmp(car.color, color) == 0 && car.status == AVAILABLE)
+        {
+            car.status = BOOKED;
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+            fclose(fp);
+            return car.carID;
+        }
+    }
+    fclose(fp);
+    return -1;
+}
+
+void addCars()
+{
+    FILE *fp = fopen("cars.dat", "ab");
+    struct Car car;
+    int total, i, nextID;
+    char categoryName[50];
+
+    if (fp == NULL)
+    {
+        printf("Unable to open inventory file.\n");
+        return;
+    }
+
+    printf("How many cars do you want to add? ");
+    scanf("%d", &total);
+    if (total <= 0) { printf("Invalid quantity.\n"); fclose(fp); return; }
+
+    nextID = getNextCarID();
+    for (i = 0; i < total; i++)
+    {
+        car.carID = nextID++;
+        printf("\n--- Enter details for car %d ---\n", i + 1);
+        carcategory();
+        printf("Enter category number: ");
+        scanf("%d", &car.category);
+        if (car.category < 1 || car.category > 4)
+        {
+            printf("Invalid category. This car was skipped.\n");
+            continue;
+        }
+        getcategory(car.category, categoryName);
+        switch (car.category)
+        {
+            case 1: compactsedan(); break;
+            case 2: Sedan(); break;
+            case 3: suv(); break;
+            case 4: GR(); break;
+        }
+        printf("Enter model number: ");
+        scanf("%d", &car.model);
+        getmodel(car.category, car.model, car.carName);
+        if (strcmp(car.carName, "Invalid Model") == 0)
+        {
+            printf("Invalid model. This car was skipped.\n");
+            continue;
+        }
+
+        if (car.category == 1) yariscolor();
+        else if (car.category == 2) corollacolor();
+        else if (car.category == 3 && car.model <= 4) fortunercolor();
+        else if (car.category == 3 || (car.category == 4 && car.model == 2)) hiluxcolor();
+        else fortunercolor();
+
+        printf("Enter color number: ");
+        scanf("%d", &car.status); /* temporary use; status is set below */
+        getcolor(car.category, car.model, car.status, car.color);
+        if (strcmp(car.color, "Invalid Color") == 0)
+        {
+            printf("Invalid color. This car was skipped.\n");
+            continue;
+        }
+        printf("Enter showroom purchase cost (Rs.): ");
+        scanf("%d", &car.purchaseCost);
+        printf("Enter selling price (Rs.): ");
+        scanf("%d", &car.sellingPrice);
+        if (car.purchaseCost <= 0 || car.sellingPrice <= 0)
+        {
+            printf("Invalid price. This car was skipped.\n");
+            continue;
+        }
+        car.status = AVAILABLE;
+        fwrite(&car, sizeof(struct Car), 1, fp);
+        printf("Car added successfully. ID: %d\n", car.carID);
+    }
+    fclose(fp);
+}
+
+void viewCarsByStatus(int wantedStatus)
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    struct Car car;
+    int found = 0;
+    if (fp == NULL) { printf("No inventory found. Add cars first.\n"); return; }
+
+    printf("\n%-6s %-48s %-20s %-14s\n", "ID", "MODEL", "COLOR", "STATUS");
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.status == wantedStatus)
+        {
+            printf("%-6d %-48s %-20s %-14s\n", car.carID, car.carName,
+                   car.color, wantedStatus == AVAILABLE ? "Available" :
+                   wantedStatus == BOOKED ? "Booked" : "Sold");
+            found++;
+        }
+    }
+    if (!found) printf("No cars in this status.\n");
+    fclose(fp);
+}
+
+double getTotalExpenses()
+{
+    FILE *fp = fopen("expenses.dat", "rb");
+    struct Expense expense;
+    double total = 0;
+    if (fp == NULL) return 0;
+    while (fread(&expense, sizeof(struct Expense), 1, fp) == 1)
+        total += expense.amount;
+    fclose(fp);
+    return total;
+}
+
+void addExpense()
+{
+    FILE *fp = fopen("expenses.dat", "ab");
+    struct Expense expense;
+    if (fp == NULL) { printf("Unable to open expenses file.\n"); return; }
+    printf("Enter expense description: ");
+    scanf(" %99[^\n]", expense.description);
+    printf("Enter expense amount (Rs.): ");
+    scanf("%lf", &expense.amount);
+    if (expense.amount <= 0)
+    { printf("Invalid amount. Expense not saved.\n"); fclose(fp); return; }
+    fwrite(&expense, sizeof(struct Expense), 1, fp);
+    fclose(fp);
+    printf("Expense saved.\n");
+}
+
+void markCarSold()
+{
+    FILE *fp = fopen("cars.dat", "rb+");
+    struct Car car;
+    int id, found = 0;
+    if (fp == NULL) { printf("Inventory file not found.\n"); return; }
+    printf("Enter car ID to mark as sold: ");
+    scanf("%d", &id);
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == id)
+        {
+            if (car.status == SOLD) printf("This car is already marked sold.\n");
+            else
+            {
+                car.status = SOLD;
+                fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+                fwrite(&car, sizeof(struct Car), 1, fp);
+                printf("Car marked as SOLD.\n");
+            }
+            found = 1;
+            break;
+        }
+    }
+    if (!found) printf("Car ID not found.\n");
+    fclose(fp);
+}
+
+void inventoryReport()
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    struct Car car;
+    int total = 0, available = 0, booked = 0, sold = 0;
+    long long grossProfit = 0;
+    double expenses, netProfit;
+    if (fp == NULL) { printf("No inventory found.\n"); return; }
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        total++;
+        if (car.status == AVAILABLE) available++;
+        else if (car.status == BOOKED) booked++;
+        else if (car.status == SOLD)
+        {
+            sold++;
+            grossProfit += (long long)car.sellingPrice - car.purchaseCost;
+        }
+    }
+    fclose(fp);
+    expenses = getTotalExpenses();
+    netProfit = (double)grossProfit - expenses;
+    printf("\n========== SHOWROOM REPORT ==========\n");
+    printf("Total cars in records : %d\n", total);
+    printf("Available cars        : %d\n", available);
+    printf("Booked cars           : %d\n", booked);
+    printf("Sold cars             : %d\n", sold);
+    printf("Gross profit on sold cars: Rs. %lld\n", grossProfit);
+    printf("Recorded showroom expenses: Rs. %.2f\n", expenses);
+    printf("Net profit / loss: Rs. %.2f\n", netProfit);
+
+    fp = fopen("cars.dat", "rb");
+    if (fp == NULL) return;
+    printf("\nAvailable stock by color:\n");
+    /* Print each available record; repeated colors represent multiple units. */
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        if (car.status == AVAILABLE)
+            printf("%s - %s (ID %d)\n", car.carName, car.color, car.carID);
+    fclose(fp);
+}
+
+void changeCarStatus()
+{
+    FILE *fp = fopen("cars.dat", "rb+");
+    struct Car car;
+    int id, newStatus, found = 0;
+    if (fp == NULL) { printf("Inventory file not found.\n"); return; }
+    printf("Enter car ID: "); scanf("%d", &id);
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == id)
+        {
+            printf("1.Available  2.Booked  3.Sold\nEnter new status: ");
+            scanf("%d", &newStatus);
+            if (newStatus < 1 || newStatus > 3)
+            { printf("Invalid status.\n"); break; }
+            car.status = newStatus;
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+            printf("Car status updated.\n");
+            found = 1;
+            break;
+        }
+    }
+    if (!found) printf("Car ID not found.\n");
+    fclose(fp);
+}
+
+void deleteCar()
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    FILE *temp = fopen("temp.dat", "wb");
+    struct Car car;
+    int id, found = 0;
+    if (fp == NULL || temp == NULL)
+    {
+        printf("Inventory file not found or cannot be opened.\n");
+        if (fp) fclose(fp);
+        if (temp) fclose(temp);
+        return;
+    }
+    printf("Enter car ID to delete: "); scanf("%d", &id);
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == id) found = 1;
+        else fwrite(&car, sizeof(struct Car), 1, temp);
+    }
+    fclose(fp); fclose(temp);
+    remove("cars.dat");
+    rename("temp.dat", "cars.dat");
+    if (found) printf("Car deleted successfully.\n");
+    else printf("Car ID not found.\n");
+}
+
+void ownerPortal()
+{
+    int choice, statusChoice;
+    do
+    {
+        printf("\n========== SHOWROOM OWNER PORTAL ==========\n");
+        printf("1. View inventory report\n");
+        printf("2. View cars by status\n");
+        printf("3. Add cars\n");
+        printf("4. Update car status\n");
+        printf("5. Delete car\n");
+        printf("6. Mark car as sold (after payment confirmation)\n");
+        printf("7. Add showroom expense\n");
+        printf("8. Exit owner portal\n");
+        printf("Enter choice: "); scanf("%d", &choice);
+        switch (choice)
+        {
+            case 1: inventoryReport(); break;
+            case 2:
+                printf("1.Available  2.Booked  3.Sold\nEnter status: ");
+                scanf("%d", &statusChoice);
+                if (statusChoice >= 1 && statusChoice <= 3) viewCarsByStatus(statusChoice);
+                else printf("Invalid status.\n");
+                break;
+            case 3: addCars(); break;
+            case 4: changeCarStatus(); break;
+            case 5: deleteCar(); break;
+            case 6: markCarSold(); break;
+            case 7: addExpense(); break;
+            case 8: printf("Leaving owner portal.\n"); break;
+            default: printf("Invalid choice.\n");
+        }
+    } while (choice != 8);
+}
+
+
 int main()
 {
-    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, owner_choice, Car_status, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice;
+    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice;
     float downpayment, remainingamount, interestrate, totalamount, monthlyinstallment;
     char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20], bookingdate[20], bookingtime[20],address[60], cnic[16];
     float taxrate, taxamount, final_car_price;
@@ -692,69 +1054,19 @@ int main()
     case 1:
         while (i <= 3)
         {
-            printf("Enter Password:");
+            printf("Enter Password: ");
             scanf("%d", &Enteredpassword);
-
             if (Enteredpassword == password)
             {
                 printf("Access Granted\n");
-                i = 4;
-                printf("\n====================================\n");
-                printf("SHOWROOM OWNER PORTAL\n");
-                printf("\n====================================\n");
-                printf("1.View Cars:\n");
-                printf("2.Add Cars:\n");
-                printf("3.Update Cars:\n");
-                printf("4.Delete Cars:\n");
-                printf("5.Exit:\n");
-                printf("Enter your choice:\n");
-                owner_choice:
-                scanf("%d", &owner_choice);
-                switch (owner_choice)
-                {
-                case 1:
-                    printf("1.Available Cars:\n");
-                    printf("2.Booked Cars:\n");
-                    printf("3.Sold Cars:\n");
-                    printf("4.Exit:\n");
-                    printf("Enter your choice:\n");
-                    scanf("%d", &Car_status);
-                    break;
-
-                case 2:
-                    printf("Add Cars:\n");
-                    break;
-
-                case 3:
-                    printf("Update Cars:\n");
-                    break;
-
-                case 4:
-                    printf("Delete Cars:\n");
-                    break;
-
-                case 5:
-                    printf("THANKS FOR VISITING\n");
-
-                    break;
-
-                default:
-                    printf("Invalid choice, please try again.\n");
-                    goto owner_choice;
-                }
+                ownerPortal();
+                break;
             }
-
             i++;
-            if (i <= 3)
-            {
-                printf("Incorrect Password, Try Again\n");
-            }
+            if (i <= 3) printf("Incorrect Password, Try Again\n");
         }
-
-        if (i == 4 && Enteredpassword != password)
-        {
-            printf("Access Denied, You have exceeded the maximum number of attempts\n");
-        }
+        if (Enteredpassword != password)
+            printf("Access Denied. Maximum attempts exceeded.\n");
         break;
 
     case 2:
@@ -1937,6 +2249,14 @@ int main()
             switch (bookingstatus)
             {
             case 1:
+            {
+                int reservedCarID = reserveCar(Car_category, Car_model, selectedcolor);
+                if (reservedCarID == -1)
+                {
+                    printf("Sorry, this model/color is not available in showroom inventory.\n");
+                    break;
+                }
+                printf("Inventory reserved. Car ID: %d\n", reservedCarID);
                 printf("Enter Your Name\n");
                 scanf(" %29[^\n]", name);
                 printf("Enter Your Phone Number (03XX-XXXXXXX)\n");
@@ -2062,8 +2382,9 @@ int main()
                     printf("Installment Duration: %d Months\n", installmentmonths);
                     printf("Monthly Installment: Rs. %.2f\n", monthlyinstallment);
                 }
-                printf("BOOKING CONFIRMED\n");
+                printf("BOOKING CONFIRMED - CAR STATUS IS BOOKED\n");
                 break;
+            }
             case 2:
                 printf("Thankyou For Visiting\n");
                 return 0;
