@@ -739,11 +739,116 @@ int reserveCar(int category, int model, const char color[])
     return -1;
 }
 
+int getAvailableCarByID(int carID, struct Car *selectedCar)
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    struct Car car;
+    if (fp == NULL) return 0;
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID && car.status == AVAILABLE)
+        {
+            *selectedCar = car;
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+int reserveCarByID(int carID)
+{
+    FILE *fp = fopen("cars.dat", "rb+");
+    struct Car car;
+    if (fp == NULL) return -1;
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID && car.status == AVAILABLE)
+        {
+            car.status = BOOKED;
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+            fclose(fp);
+            return car.carID;
+        }
+    }
+    fclose(fp);
+    return -1;
+}
+
+void initializeInventory()
+{
+    FILE *fp = fopen("cars.dat", "rb");
+    struct Car car;
+    int hasCatalogueCars = 0;
+    int category, model, quantity, colorCount, colorChoice;
+    int nextID, carprice;
+    char selectedprice[32];
+
+    if (fp != NULL)
+    {
+        while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        {
+            if (car.model >= 1 &&
+                ((car.category == 1 && car.model <= 6) ||
+                 (car.category == 2 && car.model <= 6) ||
+                 (car.category == 3 && car.model <= 9) ||
+                 (car.category == 4 && car.model <= 2)))
+            {
+                hasCatalogueCars = 1;
+                break;
+            }
+        }
+        fclose(fp);
+    }
+
+    if (hasCatalogueCars) return;
+
+    fp = fopen("cars.dat", "ab");
+    if (fp == NULL) return;
+
+    nextID = getNextCarID();
+
+    for (category = 1; category <= 4; category++)
+    {
+        if (category == 1 || category == 2) quantity = 6;
+        else if (category == 3) quantity = 9;
+        else quantity = 2;
+
+        for (model = 1; model <= quantity; model++)
+        {
+            for (int unit = 0; unit < 10; unit++)
+            {
+                car.carID = nextID++;
+                car.category = category;
+                car.model = model;
+                getmodel(category, model, car.carName);
+                enterprice(selectedprice, category, model, &carprice);
+                car.sellingPrice = carprice;
+                car.purchaseCost = carprice;
+
+                if (category == 1) colorCount = 5;
+                else if (category == 2) colorCount = 6;
+                else if ((category == 3 && model <= 4) || (category == 4 && model == 1)) colorCount = 5;
+                else colorCount = 6;
+
+                colorChoice = (unit % colorCount) + 1;
+                getcolor(category, model, colorChoice, car.color);
+                car.status = AVAILABLE;
+                fwrite(&car, sizeof(struct Car), 1, fp);
+            }
+        }
+    }
+
+    fclose(fp);
+}
+
 void addCars()
 {
     FILE *fp = fopen("cars.dat", "ab");
     struct Car car;
-    int total, i, nextID;
+    int total, i, nextID, modelChoice, colorChoice;
     char categoryName[50];
 
     if (fp == NULL)
@@ -770,36 +875,64 @@ void addCars()
             continue;
         }
         getcategory(car.category, categoryName);
-        switch (car.category)
+
+        printf("\n1. Add Existing Model\n");
+        printf("2. Add Completely New Model\n");
+        printf("Choose model type: ");
+        scanf("%d", &modelChoice);
+
+        if (modelChoice == 1)
         {
-            case 1: compactsedan(); break;
-            case 2: Sedan(); break;
-            case 3: suv(); break;
-            case 4: GR(); break;
+            switch (car.category)
+            {
+                case 1: compactsedan(); break;
+                case 2: Sedan(); break;
+                case 3: suv(); break;
+                case 4: GR(); break;
+            }
+            printf("Enter model number: ");
+            scanf("%d", &car.model);
+            getmodel(car.category, car.model, car.carName);
+            if (strcmp(car.carName, "Invalid Model") == 0)
+            {
+                printf("Invalid model. This car was skipped.\n");
+                continue;
+            }
+
+            if (car.category == 1) yariscolor();
+            else if (car.category == 2) corollacolor();
+            else if (car.category == 3 && car.model <= 4) fortunercolor();
+            else if (car.category == 3 || (car.category == 4 && car.model == 2)) hiluxcolor();
+            else fortunercolor();
+
+            printf("Enter color number: ");
+            scanf("%d", &colorChoice);
+            getcolor(car.category, car.model, colorChoice, car.color);
+            if (strcmp(car.color, "Invalid Color") == 0)
+            {
+                printf("Invalid color. This car was skipped.\n");
+                continue;
+            }
         }
-        printf("Enter model number: ");
-        scanf("%d", &car.model);
-        getmodel(car.category, car.model, car.carName);
-        if (strcmp(car.carName, "Invalid Model") == 0)
+        else if (modelChoice == 2)
         {
-            printf("Invalid model. This car was skipped.\n");
+            car.model = 0;
+            printf("Enter new car model name: ");
+            scanf(" %99[^\n]", car.carName);
+            if (strlen(car.carName) == 0)
+            {
+                printf("Invalid model name. This car was skipped.\n");
+                continue;
+            }
+            printf("Enter available colour: ");
+            scanf(" %49[^\n]", car.color);
+        }
+        else
+        {
+            printf("Invalid model type. This car was skipped.\n");
             continue;
         }
 
-        if (car.category == 1) yariscolor();
-        else if (car.category == 2) corollacolor();
-        else if (car.category == 3 && car.model <= 4) fortunercolor();
-        else if (car.category == 3 || (car.category == 4 && car.model == 2)) hiluxcolor();
-        else fortunercolor();
-
-        printf("Enter color number: ");
-        scanf("%d", &car.status); /* temporary use; status is set below */
-        getcolor(car.category, car.model, car.status, car.color);
-        if (strcmp(car.color, "Invalid Color") == 0)
-        {
-            printf("Invalid color. This car was skipped.\n");
-            continue;
-        }
         printf("Enter showroom purchase cost (Rs.): ");
         scanf("%d", &car.purchaseCost);
         printf("Enter selling price (Rs.): ");
@@ -823,56 +956,136 @@ void viewCarsByStatus(int wantedStatus)
     int found = 0;
     if (fp == NULL) { printf("No inventory found. Add cars first.\n"); return; }
 
-    printf("\n%-6s %-48s %-20s %-14s\n", "ID", "MODEL", "COLOR", "STATUS");
+    printf("\n+--------+--------------------------------+----------------------+----------------+\n");
+    printf("| %-6s | %-30s | %-20s | %-14s |\n", "ID", "MODEL", "COLOR", "STATUS");
+    printf("+--------+--------------------------------+----------------------+----------------+\n");
     while (fread(&car, sizeof(struct Car), 1, fp) == 1)
     {
         if (car.status == wantedStatus)
         {
-            printf("%-6d %-48s %-20s %-14s\n", car.carID, car.carName,
+            printf("| %-6d | %-30.30s | %-20.20s | %-14s |\n", car.carID, car.carName,
                    car.color, wantedStatus == AVAILABLE ? "Available" :
                    wantedStatus == BOOKED ? "Booked" : "Sold");
             found++;
         }
     }
-    if (!found) printf("No cars in this status.\n");
+    printf("+--------+--------------------------------+----------------------+----------------+\n");
+    if (!found) printf("| No cars in this status.                                                       |\n");
     fclose(fp);
 }
 
 void inventoryReport()
 {
-    FILE *fp = fopen("cars.dat", "rb");
+    FILE *fp;
     struct Car car;
-    int total = 0, available = 0, booked = 0, sold = 0;
+    int category, model, totalModels, carprice;
+    int available, booked, sold, total;
+    char categoryName[50];
+    char modelName[100];
+    char selectedprice[32];
 
+    printf("\n===============================================================================================\n");
+    printf("                                      INVENTORY REPORT\n");
+    printf("===============================================================================================\n");
+    printf("This report includes every model shown in the Customer Portal.\n");
+
+    for (category = 1; category <= 4; category++)
+    {
+        getcategory(category, categoryName);
+        printf("\nCATEGORY: %s\n", categoryName);
+        printf("+------------------+-----------------------------+---------------+--------+---------+---------+-------+\n");
+        printf("| %-16s | %-27s | %-13s | %6s | %7s | %7s | %5s |\n", "CATEGORY", "MODEL", "PRICE", "TOTAL", "AVAILABLE", "BOOKED", "SOLD");
+        printf("+------------------+-----------------------------+---------------+--------+---------+---------+-------+\n");
+
+        if (category == 1 || category == 2)
+            totalModels = 6;
+        else if (category == 3)
+            totalModels = 9;
+        else
+            totalModels = 2;
+
+        for (model = 1; model <= totalModels; model++)
+        {
+            getmodel(category, model, modelName);
+            enterprice(selectedprice, category, model, &carprice);
+
+            available = 0;
+            booked = 0;
+            sold = 0;
+            total = 0;
+
+            fp = fopen("cars.dat", "rb");
+            if (fp != NULL)
+            {
+                while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+                {
+                    if (car.category == category && car.model == model)
+                    {
+                        total++;
+                        if (car.status == AVAILABLE) available++;
+                        else if (car.status == BOOKED) booked++;
+                        else if (car.status == SOLD) sold++;
+                    }
+                }
+                fclose(fp);
+            }
+
+            printf("| %-16.16s | %-27.27s | %-13.13s | %6d | %7d | %7d | %5d |\n",
+                   categoryName, modelName, selectedprice, total, available, booked, sold);
+        }
+        printf("+------------------+-----------------------------+---------------+--------+---------+---------+-------+\n");
+    }
+
+    printf("\nNEW MODELS ADDED BY OWNER\n");
+    fp = fopen("cars.dat", "rb");
+    if (fp != NULL)
+    {
+        int customFound = 0;
+        printf("+--------+------------------+-----------------------------+----------------------+----------------+\n");
+        printf("| %-6s | %-16s | %-27s | %-20s | %-14s |\n", "ID", "CATEGORY", "MODEL", "COLOUR", "STATUS");
+        printf("+--------+------------------+-----------------------------+----------------------+----------------+\n");
+        while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        {
+            if (car.model == 0)
+            {
+                getcategory(car.category, categoryName);
+                printf("| %-6d | %-16.16s | %-27.27s | %-20.20s | %-14s |\n", car.carID, categoryName,
+                       car.carName, car.color, car.status == AVAILABLE ? "Available" :
+                       car.status == BOOKED ? "Booked" : "Sold");
+                customFound++;
+            }
+        }
+        printf("+--------+------------------+-----------------------------+----------------------+----------------+\n");
+        if (customFound == 0) printf("No new models have been added.\n");
+        fclose(fp);
+    }
+
+    printf("\nACTUAL INVENTORY DETAILS\n");
+    fp = fopen("cars.dat", "rb");
     if (fp == NULL)
     {
-        printf("No inventory found. Add cars first.\n");
-        return;
+        printf("No cars have been added to the inventory yet.\n");
     }
-
-    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    else
     {
-        total++;
-        if (car.status == AVAILABLE) available++;
-        else if (car.status == BOOKED) booked++;
-        else if (car.status == SOLD) sold++;
+        printf("+--------+------------------+-----------------------------+----------------------+---------------+----------------+\n");
+        printf("| %-6s | %-16s | %-27s | %-20s | %-13s | %-14s |\n", "ID", "CATEGORY", "MODEL", "COLOUR", "SELLING PRICE", "STATUS");
+        printf("+--------+------------------+-----------------------------+----------------------+---------------+----------------+\n");
+        while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+        {
+            getcategory(car.category, categoryName);
+            printf("| %-6d | %-16.16s | %-27.27s | %-20.20s | Rs.%-10d | %-14s |\n",
+                   car.carID, categoryName, car.carName, car.color, car.sellingPrice,
+                   car.status == AVAILABLE ? "Available" :
+                   car.status == BOOKED ? "Booked" : "Sold");
+        }
+        printf("+--------+------------------+-----------------------------+----------------------+---------------+----------------+\n");
+        fclose(fp);
     }
 
-    printf("\n========== INVENTORY REPORT ==========\n");
-    printf("Total cars in records : %d\n", total);
-    printf("Available cars        : %d\n", available);
-    printf("Booked cars           : %d\n", booked);
-    printf("Sold cars             : %d\n", sold);
-
-    rewind(fp);
-    printf("\nAvailable stock:\n");
-    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
-    {
-        if (car.status == AVAILABLE)
-            printf("%s - %s (ID %d)\n", car.carName, car.color, car.carID);
-    }
-
-    fclose(fp);
+    printf("\n===============================================================================================\n");
+    printf("                                         END OF INVENTORY REPORT\n");
+    printf("===============================================================================================\n");
 }
 
 void ownerPortal()
@@ -937,7 +1150,8 @@ void ownerPortal()
 
 int main()
 {
-    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice;
+    initializeInventory();
+    int password = 12345678, Enteredpassword, i = 1, customer_choice, Car_category, Car_model, color, bookingstatus, filerchoice, installmentchoice,choice, Car_Details, installmentmonths, carprice, bookingMode, selectedInventoryID;
     float downpayment, remainingamount, interestrate, totalamount, monthlyinstallment;
     char selectedcategory[50], selectedmodel[100], selectedcolor[50], selectedprice[32], name[100], city[100], phonenumber[20], filerstatus[4], installments[4], testdate[20], testtime[20], bookingdate[20], bookingtime[20],address[60], cnic[16];
     float taxrate, taxamount, final_car_price;
@@ -995,6 +1209,31 @@ int main()
         switch (customer_choice)
         {
         case 1:
+            printf("\nCURRENT SHOWROOM AVAILABILITY\n");
+            {
+                FILE *inventoryFile = fopen("cars.dat", "rb");
+                struct Car inventoryCar;
+                int inventoryFound = 0;
+                if (inventoryFile != NULL)
+                {
+                    printf("+--------+-----------------------------+----------------------+---------------+\n");
+                    printf("| %-6s | %-27s | %-20s | %-13s |\n", "CAR ID", "MODEL", "COLOUR", "PRICE (RS.)");
+                    printf("+--------+-----------------------------+----------------------+---------------+\n");
+                    while (fread(&inventoryCar, sizeof(struct Car), 1, inventoryFile) == 1)
+                    {
+                        if (inventoryCar.status == AVAILABLE)
+                        {
+                            printf("| %-6d | %-27.27s | %-20.20s | %13d |\n", inventoryCar.carID,
+                                   inventoryCar.carName, inventoryCar.color, inventoryCar.sellingPrice);
+                            inventoryFound++;
+                        }
+                    }
+                    printf("+--------+-----------------------------+----------------------+---------------+\n");
+                    fclose(inventoryFile);
+                }
+                if (inventoryFound == 0)
+                    printf("No cars are currently available in the showroom.\n");
+            }
             carcategory();
             printf("Enter Your Choice:\n");
             default_1:
@@ -2047,99 +2286,111 @@ int main()
             break;
         case 3:
             printf("Book Car:\n");
-            carcategory();
+            printf("1. Book an Existing Catalogue Model\n");
+            printf("2. Book a Newly Added Model\n");
+            printf("Choose booking type: ");
+            scanf("%d", &bookingMode);
 
-            default_29:
-            printf("\nEnter Car Category: ");
-            scanf("%d", &Car_category);
-
-            if (Car_category < 1 || Car_category > 4)
+            if (bookingMode == 2)
             {
-                printf("Invalid Category!\n");
-                goto default_29;
-                break;
-            }
-
-            getcategory(Car_category, selectedcategory);
-            switch (Car_category)
-            {
-            case 1:
-                compactsedan();
-                break;
-
-            case 2:
-                Sedan();
-                break;
-
-            case 3:
-                suv();
-                break;
-
-            case 4:
-                GR();
-                break;
-
-            default:
-                printf("Invalid Car Category!\n");
-                goto default_29;
-            }
-            default_model:
-            printf("\nEnter Your Choice: ");
-            scanf("%d", &Car_model);
-
-            getmodel(Car_category, Car_model, selectedmodel);
-
-            if (strcmp(selectedmodel, "Invalid Model") == 0)
-            {
-                printf("Invalid Model!, please try again\n");
-                goto default_model;
-                break;
-            }
-
-            if (Car_category == 1)
-            {
-                yariscolor();
-            }
-            else if (Car_category == 2)
-            {
-                corollacolor();
-            }
-            else if (Car_category == 3)
-            {
-                if (Car_model >= 1 && Car_model <= 4)
+                FILE *inventoryFile = fopen("cars.dat", "rb");
+                struct Car inventoryCar, chosenCar;
+                int inventoryFound = 0;
+                if (inventoryFile != NULL)
                 {
-                    fortunercolor();
+                    printf("\n===== NEWLY ADDED MODELS AVAILABLE =====\n");
+                    printf("%-6s %-42s %-18s %-14s\n", "ID", "MODEL", "COLOUR", "PRICE");
+                    while (fread(&inventoryCar, sizeof(struct Car), 1, inventoryFile) == 1)
+                    {
+                        if (inventoryCar.model == 0 && inventoryCar.status == AVAILABLE)
+                        {
+                            printf("%-6d %-42s %-18s Rs.%-10d\n", inventoryCar.carID,
+                                   inventoryCar.carName, inventoryCar.color, inventoryCar.sellingPrice);
+                            inventoryFound++;
+                        }
+                    }
+                    fclose(inventoryFile);
                 }
-                else
+                if (inventoryFound == 0)
                 {
-                    hiluxcolor();
+                    printf("No newly added models are currently available.\n");
+                    break;
                 }
+                printf("Enter Car ID you want to book: ");
+                scanf("%d", &selectedInventoryID);
+                if (!getAvailableCarByID(selectedInventoryID, &chosenCar) || chosenCar.model != 0)
+                {
+                    printf("Invalid Car ID or car is not available.\n");
+                    break;
+                }
+                Car_category = chosenCar.category;
+                Car_model = chosenCar.model;
+                strcpy(selectedmodel, chosenCar.carName);
+                strcpy(selectedcolor, chosenCar.color);
+                getcategory(Car_category, selectedcategory);
+                carprice = chosenCar.sellingPrice;
+                sprintf(selectedprice, "Rs. %d", carprice);
             }
-            else if (Car_category == 4)
+            else if (bookingMode == 1)
             {
-                if (Car_model == 1)
+                carcategory();
+                default_29:
+                printf("\nEnter Car Category: ");
+                scanf("%d", &Car_category);
+
+                if (Car_category < 1 || Car_category > 4)
                 {
-                    fortunercolor();
+                    printf("Invalid Category!\n");
+                    goto default_29;
                 }
-                else
+
+                getcategory(Car_category, selectedcategory);
+                switch (Car_category)
                 {
-                    hiluxcolor();
+                    case 1: compactsedan(); break;
+                    case 2: Sedan(); break;
+                    case 3: suv(); break;
+                    case 4: GR(); break;
                 }
+                default_model:
+                printf("\nEnter Your Choice: ");
+                scanf("%d", &Car_model);
+                getmodel(Car_category, Car_model, selectedmodel);
+                if (strcmp(selectedmodel, "Invalid Model") == 0)
+                {
+                    printf("Invalid Model!, please try again\n");
+                    goto default_model;
+                }
+
+                if (Car_category == 1) yariscolor();
+                else if (Car_category == 2) corollacolor();
+                else if (Car_category == 3)
+                {
+                    if (Car_model >= 1 && Car_model <= 4) fortunercolor();
+                    else hiluxcolor();
+                }
+                else if (Car_category == 4)
+                {
+                    if (Car_model == 1) fortunercolor();
+                    else hiluxcolor();
+                }
+                default_color:
+                printf("\nEnter Color Number: ");
+                scanf("%d", &color);
+                getcolor(Car_category, Car_model, color, selectedcolor);
+                if (strcmp(selectedcolor, "Invalid Color") == 0 ||
+                    strcmp(selectedcolor, "Invalid Model") == 0)
+                {
+                    printf("Invalid Color!\n");
+                    goto default_color;
+                }
+                enterprice(selectedprice, Car_category, Car_model, &carprice);
             }
-            default_color:
-            printf("\nEnter Color Number: ");
-            scanf("%d", &color);
-
-            getcolor(Car_category, Car_model, color, selectedcolor);
-
-            if (strcmp(selectedcolor, "Invalid Color") == 0 ||
-                strcmp(selectedcolor, "Invalid Model") == 0)
+            else
             {
-                printf("Invalid Color!\n");
-                goto default_color;
+                printf("Invalid booking type.\n");
                 break;
             }
-            enterprice(selectedprice, Car_category, Car_model, &carprice);
 
             printf("\n===== SELECTION SUMMARY =====\n");
             printf("Car Category: %s\n", selectedcategory);
@@ -2154,7 +2405,11 @@ int main()
             {
             case 1:
             {
-                int reservedCarID = reserveCar(Car_category, Car_model, selectedcolor);
+                int reservedCarID;
+                if (bookingMode == 2)
+                    reservedCarID = reserveCarByID(selectedInventoryID);
+                else
+                    reservedCarID = reserveCar(Car_category, Car_model, selectedcolor);
                 if (reservedCarID == -1)
                 {
                     printf("Sorry, this model/color is not available in showroom inventory.\n");
