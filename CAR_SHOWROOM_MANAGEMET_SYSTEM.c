@@ -687,7 +687,6 @@ void bookService(){
     }
 }
 
-/* ---------------- INVENTORY AND FILE HANDLING ---------------- */
 int getNextCarID()
 {
     FILE *fp;
