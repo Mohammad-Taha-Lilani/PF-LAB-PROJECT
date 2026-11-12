@@ -957,7 +957,7 @@ void viewCarsByStatus(int wantedStatus)
     if (fp == NULL) { printf("No inventory found. Add cars first.\n"); return; }
 
     printf("\n+--------+--------------------------------+----------------------+----------------+\n");
-    printf("| %-6s | %-30s | %-20s | %-14s |\n", "ID", "MODEL", "COLOR", "STATUS");
+    printf("| %-6s | %-30s | %-20s | %-14s |\n" , "ID", "MODEL", "COLOR", "STATUS");
     printf("+--------+--------------------------------+----------------------+----------------+\n");
     while (fread(&car, sizeof(struct Car), 1, fp) == 1)
     {
@@ -1088,6 +1088,65 @@ void inventoryReport()
     printf("===============================================================================================\n");
 }
 
+void updateCarStatus()
+{
+    int carID, found = 0, choice;
+    FILE *fp = fopen("cars.dat", "rb+");
+    struct Car car;
+
+    if (fp == NULL)
+    {
+        printf("Unable to open inventory file.\n");
+        return;
+    }
+
+    printf("Enter Car ID: ");
+    scanf("%d", &carID);
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID)
+        {
+            found = 1;
+
+            printf("Current Status: ");
+            if (car.status == 1)
+                printf("AVAILABLE\n");
+            else if (car.status == 2)
+                printf("BOOKED\n");
+            else if (car.status == 3)
+                printf("SOLD\n");
+
+            printf("\nSelect New Status:\n");
+            printf("1. AVAILABLE\n");
+            printf("2. BOOKED\n");
+            printf("3. SOLD\n");
+            printf("Enter choice: ");
+            scanf("%d", &choice);
+
+            if (choice < 1 || choice > 3)
+            {
+                printf("Invalid choice.\n");
+                fclose(fp);
+                return;
+            }
+
+            car.status = choice;
+
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+
+            printf("Car status updated successfully.\n");
+            break;
+        }
+    }
+
+    if (!found)
+        printf("Car ID not found.\n");
+
+    fclose(fp);
+}
+
 void ownerPortal()
 {
     int choice, statusChoice;
@@ -1126,6 +1185,8 @@ void ownerPortal()
                 break;
             case 4:
                 printf("Update Car Status\n");
+                updateCarStatus();
+                
                 break;
             case 5:
                 printf("Delete Car\n");
