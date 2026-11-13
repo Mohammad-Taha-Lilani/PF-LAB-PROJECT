@@ -1301,6 +1301,74 @@ void deleteCar()
 
     printf("\nInventory updated successfully.\n");
 }
+
+void markCarAsSold()
+{
+    int carID, found = 0, confirm;
+    FILE *fp;
+    struct Car car;
+
+    printf("\n====================================\n");
+    printf("         MARK CAR AS SOLD\n");
+    printf("====================================\n");
+
+    printf("\nAVAILABLE CARS:\n");
+    viewCarsByStatus(AVAILABLE);
+    printf("\nBOOKED CARS:\n");
+    viewCarsByStatus(BOOKED);
+
+    fp = fopen("cars.dat", "rb+");
+    if (fp == NULL)
+    {
+        printf("Unable to open inventory file.\n");
+        return;
+    }
+
+    printf("\nEnter Car ID to mark as sold: ");
+    scanf("%d", &carID);
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID)
+        {
+            found = 1;
+
+            if (car.status == SOLD)
+            {
+                printf("This car is already marked as SOLD.\n");
+                break;
+            }
+
+            printf("\nCar ID: %d\n", car.carID);
+            printf("Model: %s\n", car.carName);
+            printf("Color: %s\n", car.color);
+            printf("Selling Price: Rs.%d\n", car.sellingPrice);
+            printf("Mark this car as SOLD?\n1. Yes\n2. No\n");
+            printf("Enter choice: ");
+            scanf("%d", &confirm);
+
+            if (confirm != 1)
+            {
+                printf("Operation cancelled.\n");
+                break;
+            }
+
+            car.status = SOLD;
+
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+
+            printf("\nCar marked as SOLD successfully.\n");
+            printf("Profit on this car: Rs.%d\n", car.sellingPrice - car.purchaseCost);
+            break;
+        }
+    }
+
+    if (!found)
+        printf("Car ID not found.\n");
+
+    fclose(fp);
+}
 void ownerPortal()
 {
     int choice, statusChoice;
@@ -1347,7 +1415,8 @@ void ownerPortal()
                 deleteCar();
                 break;
             case 6:
-                printf("Mark Car as Sold\n");
+                // printf("Mark Car as Sold\n");
+                markCarAsSold();
                 break;
             case 7:
                 printf("Add Showroom Expenses\n");
