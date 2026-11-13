@@ -1146,7 +1146,229 @@ void updateCarStatus()
 
     fclose(fp);
 }
+void deleteCar()
+{
+    FILE *fp, *temp;
+    struct Car car;
+    struct Car selectedCar;
 
+    int carID;
+    int found = 0;
+    int confirm;
+    int writeError = 0;
+    int removed = 0;
+
+    printf("\n====================================\n");
+    printf("           DELETE CAR\n");
+    printf("====================================\n");
+
+    printf("\nAVAILABLE CARS IN SHOWROOM:\n");
+    viewCarsByStatus(AVAILABLE);
+
+    printf("\nEnter Car ID you want to delete: ");
+    scanf("%d", &carID);
+
+    fp = fopen("cars.dat", "rb");
+
+    if (fp == NULL)
+    {
+        printf("\nUnable to open inventory file.\n");
+        return;
+    }
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID)
+        {
+            found = 1;
+            selectedCar = car;
+            break;
+        }
+    }
+
+    fclose(fp);
+
+    if (!found)
+    {
+        printf("\nCar ID not found in inventory.\n");
+        return;
+    }
+
+    if (selectedCar.status != AVAILABLE)
+    {
+        printf("\nThis car cannot be deleted.\n");
+
+        if (selectedCar.status == BOOKED)
+            printf("Reason: This car is currently BOOKED.\n");
+        else if (selectedCar.status == SOLD)
+            printf("Reason: This car has already been SOLD.\n");
+
+        printf("Only AVAILABLE cars can be deleted.\n");
+        return;
+    }
+
+    printf("\n========== CAR DETAILS ==========\n");
+
+    printf("Car ID: %d\n", selectedCar.carID);
+    printf("Car Model: %s\n", selectedCar.carName);
+    printf("Car Color: %s\n", selectedCar.color);
+    printf("Purchase Cost: Rs. %d\n", selectedCar.purchaseCost);
+    printf("Selling Price: Rs. %d\n", selectedCar.sellingPrice);
+    printf("Status: AVAILABLE\n");
+
+    printf("\nAre you sure you want to delete this car?\n");
+    printf("1. Confirm Delete\n");
+    printf("2. Cancel\n");
+    printf("Enter your choice: ");
+    scanf("%d", &confirm);
+
+    if (confirm != 1)
+    {
+        printf("\nCar deletion cancelled.\n");
+        return;
+    }
+
+    fp = fopen("cars.dat", "rb");
+
+    if (fp == NULL)
+    {
+        printf("\nUnable to open original inventory file.\n");
+        return;
+    }
+
+    temp = fopen("cars_temp.dat", "wb");
+
+    if (temp == NULL)
+    {
+        printf("\nUnable to create temporary file.\n");
+        fclose(fp);
+        return;
+    }
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID)
+        {
+            removed++;
+            continue;
+        }
+
+        if (fwrite(&car, sizeof(struct Car), 1, temp) != 1)
+        {
+            writeError = 1;
+            break;
+        }
+    }
+
+    if (ferror(fp))
+        writeError = 1;
+
+    fclose(fp);
+    fclose(temp);
+
+    if (writeError || removed != 1)
+    {
+        printf("\nError while updating inventory.\n");
+        remove("cars_temp.dat");
+        return;
+    }
+    remove("cars_backup.dat");
+
+    if (rename("cars.dat", "cars_backup.dat") != 0)
+    {
+        printf("\nUnable to create inventory backup.\n");
+        remove("cars_temp.dat");
+        return;
+    }
+
+    if (rename("cars_temp.dat", "cars.dat") != 0)
+    {
+        printf("\nUnable to update inventory file.\n");
+
+        rename("cars_backup.dat", "cars.dat");
+
+        remove("cars_temp.dat");
+        return;
+    }
+    remove("cars_backup.dat");
+
+    printf("\n====================================\n");
+    printf("       CAR DELETED SUCCESSFULLY\n");
+    printf("====================================\n");
+
+    printf("Deleted Car ID: %d\n", selectedCar.carID);
+    printf("Deleted Model: %s\n", selectedCar.carName);
+    printf("Deleted Color: %s\n", selectedCar.color);
+
+    printf("\nInventory updated successfully.\n");
+}
+
+void markCarAsSold()
+{
+    int carID, found = 0, confirm;
+    FILE *fp;
+    struct Car car;
+
+    printf("\n====================================\n");
+    printf("         MARK CAR AS SOLD\n");
+    printf("====================================\n");
+
+    printf("\nAVAILABLE CARS:\n");
+    viewCarsByStatus(AVAILABLE);
+    printf("\nBOOKED CARS:\n");
+    viewCarsByStatus(BOOKED);
+
+    fp = fopen("cars.dat", "rb+");
+    if (fp == NULL)
+    {
+        printf("Unable to open inventory file.\n");
+        return;
+    }
+
+    printf("\nEnter Car ID to mark as sold: ");
+    scanf("%d", &carID);
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        if (car.carID == carID)
+        {
+            found = 1;
+
+            if (car.status == SOLD)
+            {
+                printf("This car is already marked as SOLD.\n");
+                break;
+            }
+
+            printf("\nCar ID: %d\n", car.carID);
+            printf("Model: %s\n", car.carName);
+            printf("Color: %s\n", car.color);
+            printf("Selling Price: Rs.%d\n", car.sellingPrice);
+            printf("Mark this car as SOLD?\n1. Yes\n2. No\n");
+            printf("Enter choice: ");
+            scanf("%d", &confirm);
+
+            if (confirm != 1)
+            {
+                printf("Operation cancelled.\n");
+                break;
+            }
+
+            car.status = SOLD;
+
+            fseek(fp, -(long)sizeof(struct Car), SEEK_CUR);
+            fwrite(&car, sizeof(struct Car), 1, fp);
+
+            printf("\nCar marked as SOLD successfully.\n");
+            printf("Profit on this car: Rs.%d\n", car.sellingPrice - car.purchaseCost);
+            break;
+        }
+    }
+
+    if (!found)
+        printf("Car ID not found.\n");
+
+    fclose(fp);
+}
 void ownerPortal()
 {
     int choice, statusChoice;
@@ -1189,10 +1411,12 @@ void ownerPortal()
                 
                 break;
             case 5:
-                printf("Delete Car\n");
+                // printf("Delete Car\n");
+                deleteCar();
                 break;
             case 6:
-                printf("Mark Car as Sold\n");
+                // printf("Mark Car as Sold\n");
+                markCarAsSold();
                 break;
             case 7:
                 printf("Add Showroom Expenses\n");
