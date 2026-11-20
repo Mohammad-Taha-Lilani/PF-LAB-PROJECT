@@ -17,7 +17,11 @@ struct Car
     int sellingPrice;
     int status;
 };
-
+struct Expense
+{
+    char description[100];
+    int amount;
+};
 void yariscolor()
 {
     printf("Car Colors:\n");
@@ -1369,6 +1373,66 @@ void markCarAsSold()
 
     fclose(fp);
 }
+void financialReport()
+{
+    FILE *fp;
+    struct Car car;
+    struct Expense exp;
+    int total = 0, available = 0, booked = 0, sold = 0;
+    int revenue = 0, soldCost = 0, stockValue = 0, totalExpenses = 0;
+    int grossProfit, netProfit;
+
+    fp = fopen("cars.dat", "rb");
+    if (fp == NULL)
+    {
+        printf("\nNo inventory found. Add cars first.\n");
+        return;
+    }
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        total++;
+        if (car.status == SOLD)
+        {
+            sold++;
+            revenue += car.sellingPrice;
+            soldCost += car.purchaseCost;
+        }
+        else
+        {
+            if (car.status == AVAILABLE) available++;
+            else booked++;
+            stockValue += car.purchaseCost;
+        }
+    }
+    fclose(fp);
+
+    fp = fopen("expenses.dat", "rb");
+    if (fp != NULL)
+    {
+        while (fread(&exp, sizeof(struct Expense), 1, fp) == 1)
+            totalExpenses += exp.amount;
+        fclose(fp);
+    }
+
+    grossProfit = revenue - soldCost;
+    netProfit = grossProfit - totalExpenses;
+
+    printf("\n====================================\n");
+    printf("         FINANCIAL REPORT\n");
+    printf("====================================\n");
+    printf("Total Cars in Records : %d\n", total);
+    printf("Available / Booked / Sold : %d / %d / %d\n", available, booked, sold);
+    printf("------------------------------------\n");
+    printf("Total Sales Revenue   : Rs.%d\n", revenue);
+    printf("Cost of Sold Cars     : Rs.%d\n", soldCost);
+    printf("Gross Profit          : Rs.%d\n", grossProfit);
+    printf("Showroom Expenses     : Rs.%d\n", totalExpenses);
+    printf("------------------------------------\n");
+    printf("NET PROFIT            : Rs.%d\n", netProfit);
+    printf("====================================\n");
+    printf("Value of Unsold Stock (at cost): Rs.%d\n", stockValue);
+}
 void ownerPortal()
 {
     int choice, statusChoice;
@@ -1422,7 +1486,8 @@ void ownerPortal()
                 printf("Add Showroom Expenses\n");
                 break;
             case 8:
-                printf("Financial Reports\n");
+                // printf("Financial Reports\n");
+                financialReport();
                 break;
             case 9:
                 printf("Leaving owner portal.\n");
