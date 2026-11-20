@@ -17,7 +17,15 @@ struct Car
     int sellingPrice;
     int status;
 };
+<<<<<<< HEAD
 
+=======
+// struct Expense
+// {
+//     char description[100];
+//     int amount;
+// };
+>>>>>>> fc9ed41ea198b55f11c396ec50f56d7a4bfca9fc
 struct Expense
 {
     int expenseID;
