@@ -18,6 +18,14 @@ struct Car
     int status;
 };
 
+struct Expense
+{
+    int expenseID;
+    char category[50];
+    char description[100];
+    int amount;
+    char date[20];
+};
 void yariscolor()
 {
     printf("Car Colors:\n");
@@ -1369,6 +1377,191 @@ void markCarAsSold()
 
     fclose(fp);
 }
+void financialReport()
+{
+    FILE *fp;
+    struct Car car;
+    struct Expense exp;
+    int total = 0, available = 0, booked = 0, sold = 0;
+    int revenue = 0, soldCost = 0, stockValue = 0, totalExpenses = 0;
+    int grossProfit, netProfit;
+
+    fp = fopen("cars.dat", "rb");
+    if (fp == NULL)
+    {
+        printf("\nNo inventory found. Add cars first.\n");
+        return;
+    }
+
+    while (fread(&car, sizeof(struct Car), 1, fp) == 1)
+    {
+        total++;
+        if (car.status == SOLD)
+        {
+            sold++;
+            revenue += car.sellingPrice;
+            soldCost += car.purchaseCost;
+        }
+        else
+        {
+            if (car.status == AVAILABLE) available++;
+            else booked++;
+            stockValue += car.purchaseCost;
+        }
+    }
+    fclose(fp);
+
+    fp = fopen("expenses.dat", "rb");
+    if (fp != NULL)
+    {
+        while (fread(&exp, sizeof(struct Expense), 1, fp) == 1)
+            totalExpenses += exp.amount;
+        fclose(fp);
+    }
+
+    grossProfit = revenue - soldCost;
+    netProfit = grossProfit - totalExpenses;
+
+    printf("\n====================================\n");
+    printf("         FINANCIAL REPORT\n");
+    printf("====================================\n");
+    printf("Total Cars in Records : %d\n", total);
+    printf("Available / Booked / Sold : %d / %d / %d\n", available, booked, sold);
+    printf("------------------------------------\n");
+    printf("Total Sales Revenue   : Rs.%d\n", revenue);
+    printf("Cost of Sold Cars     : Rs.%d\n", soldCost);
+    printf("Gross Profit          : Rs.%d\n", grossProfit);
+    printf("Showroom Expenses     : Rs.%d\n", totalExpenses);
+    printf("------------------------------------\n");
+    printf("NET PROFIT            : Rs.%d\n", netProfit);
+    printf("====================================\n");
+    printf("Value of Unsold Stock (at cost): Rs.%d\n", stockValue);
+}
+int getNextExpenseID()
+{
+    FILE *fp;
+    struct Expense expense;
+    int maxID = 0;
+
+    fp = fopen("expenses.dat", "rb");
+
+    if (fp == NULL)
+        return 1;
+
+    while (fread(&expense, sizeof(struct Expense), 1, fp) == 1)
+    {
+        if (expense.expenseID > maxID)
+        {
+            maxID = expense.expenseID;
+        }
+    }
+
+    fclose(fp);
+
+    return maxID + 1;
+}
+void addShowroomExpense()
+{
+    FILE *fp;
+    struct Expense expense;
+    int choice, confirm;
+
+    printf("\n========== ADD SHOWROOM EXPENSE ==========\n");
+
+    printf("1. Employee Salaries\n");
+    printf("2. Electricity and Gas Bills\n");
+    printf("3. Showroom Rent\n");
+    printf("4. Car Maintenance\n");
+    printf("5. Marketing and Advertisement\n");
+    printf("6. Transportation Expenses\n");
+    printf("7. Other Expenses\n");
+
+    printf("\nEnter Expense Category: ");
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+        case 1:
+            strcpy(expense.category, "Employee Salaries");
+            break;
+
+        case 2:
+            strcpy(expense.category, "Electricity and Gas");
+            break;
+
+        case 3:
+            strcpy(expense.category, "Showroom Rent");
+            break;
+
+        case 4:
+            strcpy(expense.category, "Car Maintenance");
+            break;
+
+        case 5:
+            strcpy(expense.category, "Marketing and Advertisement");
+            break;
+
+        case 6:
+            strcpy(expense.category, "Transportation");
+            break;
+
+        case 7:
+            strcpy(expense.category, "Other Expenses");
+            break;
+
+        default:
+            printf("\nInvalid Category!\n");
+            return;
+    }
+
+    printf("Enter Expense Description: ");
+    scanf(" %99[^\n]", expense.description);
+
+    printf("Enter Expense Amount (Rs.): ");
+    scanf("%d", &expense.amount);
+
+    if (expense.amount <= 0)
+    {
+        printf("\nInvalid Amount! Amount must be greater than zero.\n");
+        return;
+    }
+
+    printf("Enter Date (DD/MM/YYYY): ");
+    scanf("%19s", expense.date);
+
+    expense.expenseID = getNextExpenseID();
+
+    printf("\n========== EXPENSE DETAILS ==========\n");
+    printf("Expense ID: %d\n", expense.expenseID);
+    printf("Category: %s\n", expense.category);
+    printf("Description: %s\n", expense.description);
+    printf("Amount: Rs. %d\n", expense.amount);
+    printf("Date: %s\n", expense.date);
+
+    printf("\nConfirm Expense? (1 = Yes / 0 = No): ");
+    scanf("%d", &confirm);
+
+    if (confirm == 1)
+    {
+        fp = fopen("expenses.dat", "ab");
+
+        if (fp == NULL)
+        {
+            printf("\nError opening expense file!\n");
+            return;
+        }
+
+        fwrite(&expense, sizeof(struct Expense), 1, fp);
+
+        fclose(fp);
+
+        printf("\nExpense Added Successfully!\n");
+    }
+    else
+    {
+        printf("\nExpense Addition Cancelled!\n");
+    }
+}
 void ownerPortal()
 {
     int choice, statusChoice;
@@ -1419,10 +1612,12 @@ void ownerPortal()
                 markCarAsSold();
                 break;
             case 7:
-                printf("Add Showroom Expenses\n");
+                // printf("Add Showroom Expenses\n");
+                addShowroomExpense();
                 break;
             case 8:
-                printf("Financial Reports\n");
+                // printf("Financial Reports\n");
+                financialReport();
                 break;
             case 9:
                 printf("Leaving owner portal.\n");
