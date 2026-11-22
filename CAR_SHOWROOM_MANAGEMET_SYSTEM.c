@@ -116,24 +116,24 @@ void enterprice(char selectedprice[], int category, int model, int *carprice)
             *carprice = 4649000;
             break;
         case 2:
-            strcpy(selectedprice, "PKR 4,649,000");
-            *carprice = 4649000;
+            strcpy(selectedprice, "PKR 4,809,000");
+            *carprice = 4809000;
             break;
         case 3:
-            strcpy(selectedprice, "PKR 4,649,000");
-            *carprice = 4649000;
+            strcpy(selectedprice, "PKR 4,829,000");
+            *carprice = 4829000;
             break;
         case 4:
-            strcpy(selectedprice, "PKR 4,649,000");
-            *carprice = 4649000;
+            strcpy(selectedprice, "PKR 5,719,000");
+            *carprice = 5719000;
             break;
         case 5:
-            strcpy(selectedprice, "PKR 4,649,000");
-            *carprice = 4649000;
+            strcpy(selectedprice, "PKR 5,999,000");
+            *carprice = 5999000;
             break;
         case 6:
-            strcpy(selectedprice, "PKR 4,649,000");
-            *carprice = 4649000;
+            strcpy(selectedprice, "PKR 6,049,000");
+            *carprice = 6049000;
             break;
         default:
             strcpy(selectedprice, "Invalid Model");
