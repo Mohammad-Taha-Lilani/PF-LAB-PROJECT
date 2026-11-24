@@ -433,44 +433,67 @@ int getCarPrice(int category, int model)
     case 1:
         switch (model)
         {
-        case 1: return 4649000;
-        case 2: return 4809000;
-        case 3: return 4829000;
-        case 4: return 5719000;
-        case 5: return 5999000;
-        case 6: return 6049000;
+        case 1:
+            return 4649000;
+        case 2:
+            return 4809000;
+        case 3:
+            return 4829000;
+        case 4:
+            return 5719000;
+        case 5:
+            return 5999000;
+        case 6:
+            return 6049000;
         }
         break;
     case 2:
         switch (model)
         {
-        case 1: return 6202000;
-        case 2: return 6802000;
-        case 3: return 7339000;
-        case 4: return 7029000;
-        case 5: return 7669000;
-        case 6: return 7709000;
+        case 1:
+            return 6202000;
+        case 2:
+            return 6802000;
+        case 3:
+            return 7339000;
+        case 4:
+            return 7029000;
+        case 5:
+            return 7669000;
+        case 6:
+            return 7709000;
         }
         break;
     case 3:
         switch (model)
         {
-        case 1: return 12435000;
-        case 2: return 14935000;
-        case 3: return 18539000;
-        case 4: return 19569000;
-        case 5: return 10100000;
-        case 6: return 11379000;
-        case 7: return 12329000;
-        case 8: return 14279000;
-        case 9: return 14869000;
+        case 1:
+            return 12435000;
+        case 2:
+            return 14935000;
+        case 3:
+            return 18539000;
+        case 4:
+            return 19569000;
+        case 5:
+            return 10100000;
+        case 6:
+            return 11379000;
+        case 7:
+            return 12329000;
+        case 8:
+            return 14279000;
+        case 9:
+            return 14869000;
         }
         break;
     case 4:
         switch (model)
         {
-        case 1: return 20499000;
-        case 2: return 15839000;
+        case 1:
+            return 20499000;
+        case 2:
+            return 15839000;
         }
         break;
     }
